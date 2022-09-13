@@ -1,0 +1,28 @@
+html {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+body {
+    font-family:'Times New Roman', Times, serif;
+    background-color: #004477;
+}
+
+#text {
+    text-align: center;
+    background-color: #770044;
+    font-size: 2.5em;
+}
+
+#nscc {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #447700;
+}
+
+#novaScotia {
+    font-style: italic;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #447700;
+}
