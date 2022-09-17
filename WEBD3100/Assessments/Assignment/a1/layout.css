@@ -1,13 +1,6 @@
-@media only screen and (max-device-width: 480px) {}
-
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) {}
-
-@media only screen and (min-device-width: 1025px) and (max-device-width: 1200px) {}
-
-@media only screen and (min-device-width: 1201px) {
-
+@media only screen and (max-device-width: 480px) {
     html,
-    body {
+    body {        
         margin: 0;
         padding: 0;
         height: 100%;
@@ -15,28 +8,211 @@
 
     h1 {
         text-align: center;
-        margin-bottom: 10px;
+        margin: 0;
     }
 
-    div {
-        width: 50%;
-        height: 50%;
-        float: left;
-        text-align: center;
+    .containerTop, .containerBottom {
+        display: flex;
+        height: auto;
+        flex-direction: column;
+    }
+
+    .contrast,
+    .repetition,
+    .alignment,
+    .proximity {
+        flex: 1;
         display: flex;
         flex-direction: column;
-        align-items: center;
         justify-content: center;
+        align-items: center;
+    }
+
+    .contrast *,
+    .repetition *,
+    .alignment *,
+    .proximity * {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     .contrast p,
     .repetition p,
     .alignment p,
     .proximity p {
-        width: auto;
+        margin: 10px;
+        text-align: center;
     }
 
     footer {
+        margin: 0;
+        text-align: center;
+    }
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) {
+    html,
+    body {        
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+
+    h1 {
+        text-align: center;
+        margin: 0;
+    }
+
+    .containerTop, .containerBottom {
+        display: flex;
+        height: auto;
+        flex-direction: column;
+    }
+
+    .contrast,
+    .repetition,
+    .alignment,
+    .proximity {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contrast *,
+    .repetition *,
+    .alignment *,
+    .proximity * {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contrast p,
+    .repetition p,
+    .alignment p,
+    .proximity p {
+        margin: 10px;
+        text-align: center;
+    }
+
+    footer {
+        margin: 0;
+        text-align: center;
+    }
+}
+
+@media only screen and (min-device-width: 1025px) and (max-device-width: 1200px) {
+    html,
+    body {        
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+
+    h1 {
+        text-align: center;
+        margin: 0;
+    }
+
+    .containerTop, .containerBottom {
+        display: flex;
+        height: auto;
+    }
+
+    .contrast,
+    .repetition,
+    .alignment,
+    .proximity {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contrast *,
+    .repetition *,
+    .alignment *,
+    .proximity * {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contrast p,
+    .repetition p,
+    .alignment p,
+    .proximity p {
+        margin: 10px;
+        text-align: center;
+    }
+
+    footer {
+        margin: 0;
+        text-align: center;
+    }
+}
+
+@media only screen and (min-device-width: 1201px) {
+
+    html,
+    body {        
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+
+    h1 {
+        text-align: center;
+        margin: 0;
+    }
+
+    .containerTop, .containerBottom {
+        display: flex;
+        height: auto;
+    }
+
+    .contrast,
+    .repetition,
+    .alignment,
+    .proximity {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contrast *,
+    .repetition *,
+    .alignment *,
+    .proximity * {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contrast p,
+    .repetition p,
+    .alignment p,
+    .proximity p {
+        margin: 10px;
+        width: auto;
+        text-align: center;
+    }
+
+    footer {
+        margin: 0;
         text-align: center;
     }
 
