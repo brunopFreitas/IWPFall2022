@@ -1,0 +1,2 @@
+{"_id":10,"artistname":"Bloodbath","address":{"street":"carnage st","city":"Stockolm","state":"moshPit","country":"Sweden"}}
+{"_id":{"$oid":"6328a30b46a796181e94e7ad"},"artistname":"Death","albuns":[{"album":"The Sound of Perseverance","year":2001,"genre":"Death Metal"},{"album":"Symbolic","year":1998,"genre":"Death Metal"}]}

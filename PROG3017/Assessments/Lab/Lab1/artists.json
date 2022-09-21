@@ -1,0 +1,8 @@
+{"_id":{"$oid":"6328a12446a796181e94e7a8"},"artistname":"Job for a Cowboy"}
+{"_id":{"$oid":"6328a1cb46a796181e94e7a9"},"artistname":"Sepultura"}
+{"_id":1,"artistname":"Iron Maiden"}
+{"_id":{"$oid":"6328a23e46a796181e94e7aa"},"artistname":"Black Sabbath"}
+{"_id":{"$oid":"6328a23e46a796181e94e7ab"},"artistname":"Dio"}
+{"_id":{"$oid":"6328a23e46a796181e94e7ac"},"artistname":"Metallica"}
+{"_id":{"$oid":"6328a30b46a796181e94e7ad"},"artistname":"Death","albuns":[{"album":"The Sound of Perseverance","year":2001,"genre":"Death Metal"},{"album":"Symbolic","year":1998,"genre":"Death Metal"}]}
+{"_id":10,"artistname":"Bloodbath","address":{"street":"carnage st","city":"Stockolm","state":"moshPit","country":"Sweden"}}
