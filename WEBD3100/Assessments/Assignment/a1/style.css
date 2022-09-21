@@ -1,0 +1,44 @@
+html,
+body {
+    background-color: white;
+}
+
+h1,
+footer {
+    font-family: 'Anton';
+    font-weight: lighter;
+}
+
+.contrast {
+    background-color: #65B44B;
+}
+
+.repetition {
+    background-color: #4B99B4;
+}
+
+.alignment {
+    background-color: #9A4BB4;
+}
+
+.proximity {
+    background-color: #B4664B;
+}
+
+.contrast h2,
+.repetition h2,
+.alignment h2,
+.proximity h2 {
+    font-family: 'Playfair Display';
+    text-decoration: underline;
+    margin-bottom: 30px;
+
+}
+
+.contrast p,
+.repetition p,
+.alignment p,
+.proximity p {
+    font-size: 25px;
+    margin: 15px;
+}
