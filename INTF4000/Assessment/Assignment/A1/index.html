@@ -1,29 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <title>HangYourHeadMusicPlayer</title>
-  </head>
-  <body class=".container-fluid text-center d-flex flex-column justify-content-center align-items-center align-self-center">
-    <h2>Name of Song Goes here!</h2>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-    <img class="img-fluid img-thumbnail" src="img/singer.jpg" alt="Singer">
-   
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <label class="input-group-text" for="inputGroupSelect01">Songs</label>
-      </div>
-      <select class="custom-select" id="inputGroupSelect01">
-        <option selected>Choose...</option>
-        <option value="1">songName#1</option>
-        <option value="2">songName#2</option>
-        <option value="3">songName#3</option>
-      </select>
-    </div>   
 
-    <audio controls autoplay></audio>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit|Metal+Mania">
+  <title>HornsHandPlayer</title>
+</head>
+
+<body
+  class=".container-fluid text-center d-flex flex-column justify-content-center align-items-center align-self-center">
+  <!-- Icon from https://thenounproject.com/icon/horn-hands-650780/ -->
+  <!-- Icon hosted at https://www.base64-image.de/ -->
+  <h1>HornsHand Player<i class="hornHands"></i></h1>
+  <h2>Name of Song Goes here!</h2>
+  <!-- Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
+  </script>
+  <!-- Image from https://unsplash.com/ -->
+  <img class="img-fluid img-thumbnail" src="img/singer.jpg" alt="Singer">
+  <div class="input-group mb-3 select">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="inputGroupSelect01">Songs</label>
+    </div>
+    <select class="custom-select" id="inputGroupSelect01">
+      <option selected>Choose...</option>
+      <option value="1">songName#1</option>
+      <option value="2">songName#2</option>
+      <option value="3">songName#3</option>
+    </select>
+  </div>
+
+  <audio controls autoplay></audio>
+</body>
+
 </html>
