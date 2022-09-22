@@ -7,7 +7,7 @@
 <h1>Display overall PHP information</h1>
 <?php
 echo "<p>Step 4</p>";
-echo phpinfo();
+phpinfo();
 ?>
 
 </body>
