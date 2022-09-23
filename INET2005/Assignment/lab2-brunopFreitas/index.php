@@ -58,7 +58,7 @@ printAge($personAge);
 
 echo "<p>Step 4</p>";
 echo "<p><a href=overalphpinfo.php target=_blank>OveralPHPInfo</a></p>";
-echo "<p><a href=specificphpinfo.php target=_blank>SpecificPHPInfo</a></p>";
+    echo "<p><a href=specificphpinfo.php target=_blank>SpecificPHPInfo</a></p>";
 
 ?>
 
