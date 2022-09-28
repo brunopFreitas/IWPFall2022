@@ -1,0 +1,96 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.logo {
+    width: 47px;
+    height: 47px;
+}
+
+.imgsize {
+    width: 27px;
+    height: 27px;
+}
+
+.cart {
+    color: white;
+    font-size: 14px;
+
+}
+
+.signin {
+    color: white;
+    font-size: 14px;
+    background-color: #005177;
+}
+
+/* Fonts */
+body {
+    font-family: Arial, Helvetica;
+    font-weight: bold;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Navbar */
+.flex-nav {
+    display: flex;
+    align-items: center;
+    background-color: #006491;   
+    text-align: center;
+    letter-spacing: .02rem;
+    text-transform: uppercase;
+}
+
+.flex-nav a {
+    color: white;
+    text-decoration: none;
+    padding: .75rem .625rem;
+    align-items: center;
+}
+
+.flex-nav button {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    text-decoration: none;
+    font-family: Arial, Helvetica;
+    font-weight: bold;
+    padding: 0;
+}
+
+/* Split Section */
+.split{
+    display: flex;
+    margin: 2rem 0;
+}
+
+.split div {
+    display: flex;
+    flex: 1 1 50%;
+    height: 600px;
+    flex-direction: column;
+    margin: 5px;
+}
+
+.split-left {
+    background-image: url("https://cache.dominos.com/nolo/ca/en/6_88_8/assets/build/market/CA/_en/images/promo/mm-pizza-more.png");
+}
+
+.split-right .top {
+    background-image: url(https://cache.dominos.com/nolo/ca/en/6_88_8/assets/build/market/CA/_en/images/promo/large4topping_side.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.split-right .bottom {
+    background-image: url(https://cache.dominos.com/nolo/ca/en/6_88_8/assets/build/market/CA/_en/images/promo/large_feast_side.png);
+    background-size: cover;
+    background-repeat: no-repeat;    
+}
+
