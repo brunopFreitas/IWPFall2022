@@ -54,26 +54,25 @@
 } */
 
 @media only screen and (min-device-width: 480px) {
+
     html,
-    body {        
+    body {
         margin: 0;
         padding: 0;
         height: 100%;
     }
 
-    h1 {
-        margin: 10px;
-    }
-
-    .heading {
-        flex-basis: 100%;
-        flex: 2;
-    }
-
     .container {
-        flex: 1;
-        display: flex;
         max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .container h1 {
+        text-align: left;
+    }
+
+    .types {
+        display: flex;
         justify-content: center;
         align-items: center;
         margin: auto;
@@ -85,13 +84,30 @@
     .designer {
         flex: 1;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         margin: 10px;
+    }
+
+    .womenimg,
+    .menimg,
+    .kidsimg,
+    .fashiondesignerimg {
+        width: auto;
+        height: auto;
+        max-width: 600px;
+        max-height: 450px;
+    }
+
+    .women h2,
+    .men h2,
+    .kids h2,
+    .designer h2 {
+        margin-top: 5px;
     }
 
     footer {
         margin: 0;
     }
 }
-

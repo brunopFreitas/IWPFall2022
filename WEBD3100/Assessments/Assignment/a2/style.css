@@ -3,8 +3,10 @@ body {
     background-color: white;
 }
 
-h1, footer {
-    font-family: 'Cabin:wght@400';
+h1,
+footer {
+    font-family: 'Cabin', sans-serif;
+    font-weight: 400;
 }
 
 footer {
@@ -12,26 +14,26 @@ footer {
 }
 
 .women {
-    background-color: #65B44B;
+    
 }
 
 .men {
-    background-color: #4B99B4;
+    
 }
 
 .kids {
-    background-color: #9A4BB4;
+    
 }
 
 .designer {
-    background-color: #B4664B;
+    
 }
 
 .women h2,
 .men h2,
 .kids h2,
 .designer h2 {
-    font-family: 'Cabin:wght@700';
-    margin-top: 30px;
+    font-family: 'Cabin', sans-serif;
+    font-weight: 700;
 
 }
