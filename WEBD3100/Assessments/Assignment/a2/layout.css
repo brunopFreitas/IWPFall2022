@@ -1,0 +1,97 @@
+/* @media only screen and (max-device-width: 479px) {
+    html,
+    body {        
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+
+    h1 {
+        text-align: center;
+        margin: 0;
+    }
+
+    .containerTop, .containerBottom {
+        display: flex;
+        height: auto;
+        flex-direction: column;
+    }
+
+    .contrast,
+    .repetition,
+    .alignment,
+    .proximity {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contrast *,
+    .repetition *,
+    .alignment *,
+    .proximity * {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contrast p,
+    .repetition p,
+    .alignment p,
+    .proximity p {
+        margin: 10px;
+        text-align: center;
+    }
+
+    footer {
+        margin: 0;
+        text-align: center;
+    }
+} */
+
+@media only screen and (min-device-width: 480px) {
+    html,
+    body {        
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+
+    h1 {
+        margin: 10px;
+    }
+
+    .heading {
+        flex-basis: 100%;
+        flex: 2;
+    }
+
+    .container {
+        flex: 1;
+        display: flex;
+        max-width: 1200px;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+    }
+
+    .women,
+    .men,
+    .kids,
+    .designer {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
+    }
+
+    footer {
+        margin: 0;
+    }
+}
+
