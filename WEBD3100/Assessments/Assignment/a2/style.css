@@ -1,39 +1,143 @@
-html,
-body {
-    background-color: white;
+@media only screen and (max-device-width: 479px) {
+
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background-color: white;
+    }
+
+    h1,
+    footer {
+        font-family: 'Cabin', sans-serif;
+        font-weight: 400;
+        font-size: 20px;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .container h1 {
+        text-align: center;
+    }
+
+    .types {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        flex-wrap: wrap;
+    }
+
+    .women,
+    .men,
+    .kids,
+    .designer {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .womenimg,
+    .menimg,
+    .kidsimg,
+    .fashiondesignerimg {
+        width: 290px;
+        height: 290px;
+        max-width: 600px;
+        max-height: 450px;
+    }
+
+    .women h2,
+    .men h2,
+    .kids h2,
+    .designer h2 {
+        margin-top: 5px;
+    }
+
+    footer {
+        margin: 0;
+        text-align: center;
+    }
 }
 
-h1,
-footer {
-    font-family: 'Cabin', sans-serif;
-    font-weight: 400;
-}
+@media only screen and (min-device-width: 480px) {
 
-footer {
-    text-align: center;
-}
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background-color: white;
+    }
 
-.women {
-    
-}
+    h1,
+    footer {
+        font-family: 'Cabin', sans-serif;
+        font-weight: 400;
+    }
 
-.men {
-    
-}
+    .page-title {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
 
-.kids {
-    
-}
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
 
-.designer {
-    
-}
+    .container h1 {
+        text-align: left;
+    }
 
-.women h2,
-.men h2,
-.kids h2,
-.designer h2 {
-    font-family: 'Cabin', sans-serif;
-    font-weight: 700;
+    .types {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 0;
+        padding: 0;
+    }
 
+    .women,
+    .men,
+    .kids,
+    .designer {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .womenimg,
+    .menimg,
+    .kidsimg,
+    .fashiondesignerimg {
+        width: 290px;
+        height: 290px;
+        max-width: 600px;
+        max-height: 450px;
+    }
+
+    .women h2,
+    .men h2,
+    .kids h2,
+    .designer h2 {
+        margin-top: 5px;
+    }
+
+    footer {
+        margin: 0;
+        text-align: center;
+    }
 }
