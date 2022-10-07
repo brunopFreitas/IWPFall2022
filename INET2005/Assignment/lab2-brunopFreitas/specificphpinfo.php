@@ -9,7 +9,7 @@
 echo "<p>Step 4</p>";
 $phpversion = phpversion();
 $zendVersion = zend_version();
-$mimeContent = mime_content_type('/etc/php/8.0/fpm/php.ini');
+$mimeContent = mime_content_type('php.ini');
 
 echo "<h1> This page was rendered in PHP version $phpversion </h1>";
 echo "<p>Php Version: $phpversion</p>";
