@@ -5,7 +5,7 @@ const createWindow = () => {
     const win = new BrowserWindow({
       width: 400,
       height: 600,
-      frame: false,
+      frame: true,
       webPreferences: {
         preload: path.join(__dirname, 'preload.js')
       }

@@ -12,6 +12,7 @@ foreach($fileList as $fileName)
 }
 
 $maxRows = 25;
+$page = 0;
 
 ?>
 
@@ -26,6 +27,10 @@ th, tr, td { border: solid 1px black;}
 </style>
 <h1>INET2005 - Bruno Freitas - Assignment 1</h1>
 <p>REQ 1, 2, 3</p>
+<form action="main.php" method="post">
+    <p>Search: <input type="text" name="word"></p>
+    <p><input type="submit" name="Submit" value="Submit"></p>
+</form>
 <table>
 <thead>
 <th>Employee Number</th>
@@ -37,9 +42,18 @@ th, tr, td { border: solid 1px black;}
 </thead>
 <tbody>
 <?php
-if(!isset($_POST["word"])) {
-$result = displayEmployee(3, $maxRows);
-while($row = mysqli_fetch_assoc($result)):
+//Quantity results
+$total_rows = mysqli_num_rows(countEmployee());
+
+//echo $total_rows;
+$total_pages = ceil($total_rows/$maxRows);
+
+//Display first time
+if(!isset($_POST["word"]) && !isset($_POST['action'])) {
+    $start = $page*$maxRows;
+    $result = displayEmployeePage($start, $maxRows);
+    $page++;
+    while($row = mysqli_fetch_assoc($result)):
     ?>
     <tr>
         <td><?php echo $row['emp_no'] ?></td>
@@ -50,10 +64,57 @@ while($row = mysqli_fetch_assoc($result)):
         <td><?php echo $row['hire_date'] ?></td>
     </tr>
 
+<?php endwhile ?>
 <?php
-endwhile;
+//    Next Button
+} elseif (!isset($_POST["word"]) && isset($_POST['action'])) {
+    if ($_POST['action'] == 'Next') {
+        $start = intval($_POST['page'])*$maxRows;
+        if ($start > $total_rows) {
+            $start = $total_rows -1;
+        }
+        $result = displayEmployeePage($start, $maxRows);
+        $page = intval($_POST['page'])+1;
+        if ($page > $total_pages) {
+            $page = $total_pages;
+        }
+        while($row = mysqli_fetch_assoc($result)):
+            ?>
+            <tr>
+                <td><?php echo $row['emp_no'] ?></td>
+                <td><?php echo $row['birth_date'] ?></td>
+                <td><?php echo $row['first_name'] ?></td>
+                <td><?php echo $row['last_name'] ?></td>
+                <td><?php echo $row['gender'] ?></td>
+                <td><?php echo $row['hire_date'] ?></td>
+            </tr>
+
+        <?php endwhile ?>
+ <?php
+        //    Previous Button
+    } elseif ($_POST['action'] == 'Previous') {
+        $result = displayEmployeePage(0, $maxRows);
+        while($row = mysqli_fetch_assoc($result)):
+            ?>
+            <tr>
+                <td><?php echo $row['emp_no'] ?></td>
+                <td><?php echo $row['birth_date'] ?></td>
+                <td><?php echo $row['first_name'] ?></td>
+                <td><?php echo $row['last_name'] ?></td>
+                <td><?php echo $row['gender'] ?></td>
+                <td><?php echo $row['hire_date'] ?></td>
+            </tr>
+
+        <?php endwhile ?>
+<?php
+//    No button
+    } else {
+        "<p>Wrong action!</p>";
+    }
 }
 
+
+//WHERE my result
 if(isset($_POST["word"])) {
 $result = findEmployee($_POST["word"]);
 $row = mysqli_fetch_assoc($result);
@@ -78,15 +139,12 @@ $row = mysqli_fetch_assoc($result);
 ?>
     </tbody>
 </table>
-<button id="previousbtn">
-    Previous
-</button>
-<button id="nextbtn">
-    Next
-    </button>
 <form action="main.php" method="post">
-    <p>Search: <input type="text" name="word"></p>
-    <p><input type="submit" name="Submit" value="Submit"></p>
+    <p><?php echo 'Total Results: ', $total_rows ?></p>
+    <p><?php echo 'Row number: ', $page ?></p>
+    <input type="hidden" name="page" value="<?php echo $page; ?>">
+    <input type="submit" name="action" value="Previous" />
+    <input type="submit" name="action" value="Next" />
     <p></p>
 </form>
 </body>

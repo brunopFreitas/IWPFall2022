@@ -21,7 +21,7 @@ function findEmployee($condition) {
         "emp_no " .
         "LIMIT " .
         "0,25";
-    $result = mysqli_query($conn,$myQuerie);
+    return $result = mysqli_query($conn,$myQuerie);
     if(!$result)
     {
         die("Could not retrieve records from database: " . mysqli_error($conn));
