@@ -1,6 +1,6 @@
 <?php
 require_once ("dbconn.php");
-function findEmployee($condition) {
+function findEmployee($condition, $start, $limit) {
     $conn = getDbConnection();
     $myQuerie = "SELECT " .
         "* " .
@@ -10,17 +10,19 @@ function findEmployee($condition) {
         "first_name " .
         "LIKE " .
         "'%" .
-        $_POST['word'] .
+        $condition .
         "%'" .
         " || last_name " .
         "LIKE " .
         "'%" .
-        $_POST['word'] .
+        $condition .
         "%'" .
         " ORDER BY " .
         "emp_no " .
         "LIMIT " .
-        "0,25";
+        $start .
+        "," .
+        $limit;
     return $result = mysqli_query($conn,$myQuerie);
     if(!$result)
     {

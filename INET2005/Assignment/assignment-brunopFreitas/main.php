@@ -28,7 +28,8 @@ th, tr, td { border: solid 1px black;}
 <h1>INET2005 - Bruno Freitas - Assignment 1</h1>
 <p>REQ 1, 2, 3</p>
 <form action="main.php" method="post">
-    <p>Search: <input type="text" name="word"></p>
+<!--    Sticky Form-->
+    <p>Search: <input type="text" name="word" value="<?php if (isset($_POST ['word'])) echo $_POST['word'];?>"></p>
     <p><input type="submit" name="Submit" value="Submit"></p>
 </form>
 <table>
@@ -50,9 +51,7 @@ $total_pages = ceil($total_rows/$maxRows);
 
 //Display first time
 if(!isset($_POST["word"]) && !isset($_POST['action'])) {
-    $start = $page*$maxRows;
-    $result = displayEmployeePage($start, $maxRows);
-    $page++;
+    $result = displayEmployeePage(0, $maxRows);
     while($row = mysqli_fetch_assoc($result)):
     ?>
     <tr>
@@ -69,15 +68,15 @@ if(!isset($_POST["word"]) && !isset($_POST['action'])) {
 //    Next Button
 } elseif (!isset($_POST["word"]) && isset($_POST['action'])) {
     if ($_POST['action'] == 'Next') {
-        $start = intval($_POST['page'])*$maxRows;
-        if ($start > $total_rows) {
-            $start = $total_rows -1;
-        }
-        $result = displayEmployeePage($start, $maxRows);
         $page = intval($_POST['page'])+1;
         if ($page > $total_pages) {
             $page = $total_pages;
         }
+        $start = $page*$maxRows;
+        if ($start > $total_rows) {
+            $start = $total_rows -1;
+        }
+        $result = displayEmployeePage($start, $maxRows);
         while($row = mysqli_fetch_assoc($result)):
             ?>
             <tr>
@@ -93,7 +92,12 @@ if(!isset($_POST["word"]) && !isset($_POST['action'])) {
  <?php
         //    Previous Button
     } elseif ($_POST['action'] == 'Previous') {
-        $result = displayEmployeePage(0, $maxRows);
+        $page = intval($_POST['page'])-1;
+        if ($page < 0) {
+            $page = 0;
+        }
+        $start = $page*$maxRows;
+        $result = displayEmployeePage($start, $maxRows);
         while($row = mysqli_fetch_assoc($result)):
             ?>
             <tr>
@@ -116,8 +120,9 @@ if(!isset($_POST["word"]) && !isset($_POST['action'])) {
 
 //WHERE my result
 if(isset($_POST["word"])) {
-$result = findEmployee($_POST["word"]);
-$row = mysqli_fetch_assoc($result);
+    $condition = $_POST['word'];
+    $result = findEmployee($condition,0,25);
+    $row = mysqli_fetch_assoc($result);
     if($row!=0) {
         while($row = mysqli_fetch_assoc($result)):
             ?>
@@ -141,7 +146,7 @@ $row = mysqli_fetch_assoc($result);
 </table>
 <form action="main.php" method="post">
     <p><?php echo 'Total Results: ', $total_rows ?></p>
-    <p><?php echo 'Row number: ', $page ?></p>
+    <p><?php $pageResult = $page; echo 'Row number: ', ++$pageResult ?></p>
     <input type="hidden" name="page" value="<?php echo $page; ?>">
     <input type="submit" name="action" value="Previous" />
     <input type="submit" name="action" value="Next" />
