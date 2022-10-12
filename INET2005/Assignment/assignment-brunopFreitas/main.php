@@ -2,7 +2,8 @@
 session_start();
 $fileList = array(
     'req1.php',
-    'req3.php'
+    'req3.php',
+    'req4.php'
 );
 
 $dirPath = '';
@@ -30,7 +31,6 @@ if ($_POST['word'] && !$_POST['Clear']) {
     $page = 0;
 }
     $condition = $_SESSION["condition"];
-
 ?>
 
 <html lang="en">
@@ -41,8 +41,12 @@ if ($_POST['word'] && !$_POST['Clear']) {
 <body>
 <style>
 th, tr, td { border: solid 1px black;}
+form {
+    margin: 0;
+    padding: 0;
+}
 #emp-nmb, textarea {
-    background-color: gray;
+    background-color: lightgray;
 }
 </style>
 <h1>INET2005 - Bruno Freitas - Assignment 1</h1>
@@ -52,6 +56,7 @@ th, tr, td { border: solid 1px black;}
     <p>Search: <input type="text" name="word" value="<?php echo $condition?>"></p>
     <p><input type="submit" name="Submit" value="Search"><input type="submit" name="Clear" value="Clear"></p>
 </form>
+<form action="main.php" method="post">
 <table>
 <thead>
 <th>Employee Number</th>
@@ -64,24 +69,43 @@ th, tr, td { border: solid 1px black;}
 <th>Delete</th>
 </thead>
 <tbody>
-<form action="main.php" method="post">
-    <p><input type="submit" name="addBtn" value="Add"></p>
-</form>
+<p><input type="submit" name="addBtn" value="Add"></p>
 <?php
 if($_POST['addBtn']) {
+    $row = mysqli_fetch_assoc(getMyLastPK());
+//    Solving the PK issue
+    $myCurrentPK = $row['emp_no']+1;
+    $_SESSION["nextPK"] = $myCurrentPK;
     echo "<tr>";
-    echo "<td><input type='text' id='emp-nmb' name='emp-nmb' disabled></td>";
+    ?>
+    <td><input type='text' id='emp-nmb' name='emp-nmb' value="<?php echo $myCurrentPK;?>" disabled></td>
+<?php
     echo "<td><input type='text' id='emp-brt-dt' name='emp-brt-dt'></td>";
     echo "<td><input type='text' id='emp-fn' name='emp-fn'></td>";
     echo "<td><input type='text' id='emp-ln' name='emp-ln'></td>";
     echo "<td><input type='text' id='emp-g' name='emp-g'></td>";
     echo "<td><input type='text' id='emp-hd' name='emp-hd'></td>";
-    echo "<td><input type='submit' name='add' value='Add/Edit'></td>";
+    echo "<td><input type='submit' name='add' value='Add'></td>";
     echo "<td><input type='submit' name='delete' value='Delete'></td>";
     echo "</tr>";
 }
 ?>
+<?php
+if($_POST['add']) {
+    if($_SESSION["nextPK"] && $_POST['emp-brt-dt'] && $_POST['emp-fn'] && $_POST['emp-ln'] && $_POST['emp-g'] && $_POST['emp-hd']) {
+        $emp_no =  $_SESSION["nextPK"];
+        $birthDate  =  $_POST['emp-brt-dt'];
+        $firstName  =  $_POST['emp-fn'];
+        $lastName  =  $_POST['emp-ln'];
+        $gender  =  $_POST['emp-g'];
+        $hireDate =  $_POST['emp-hd'];
+        $result = addEmployee($emp_no, $birthDate, $firstName, $lastName, $gender, $hireDate);
+        echo "Number of rows affected: " , $result;
+    } else {
 
+    }
+}
+?>
 <?php
 // Displaying employee info
 if (!$condition) {
@@ -111,7 +135,7 @@ if (!$condition) {
                 <td><?php echo $row['last_name'] ?></td>
                 <td><?php echo $row['gender'] ?></td>
                 <td><?php echo $row['hire_date'] ?></td>
-                <td><input type="submit" name="add" value="Add/Edit"></td>
+                <td><?php echo "<a href='req5.php?id=".$row['emp_no']."'><input type='button' name='add' value='Add/Edit'></a>"?></td>
                 <td><input type="submit" name="delete" value="Delete"></td>
             </tr>
 
@@ -154,7 +178,7 @@ if (!$condition) {
                     <td><?php echo $row['last_name'] ?></td>
                     <td><?php echo $row['gender'] ?></td>
                     <td><?php echo $row['hire_date'] ?></td>
-                    <td><input type="submit" name="add" value="Add/Edit"></td>
+                    <td><?php echo "<a href='main.php?id=".$row['emp_no']."'><input type='submit' name='add' value='Add/Edit'></a>;"?></td>
                     <td><input type="submit" name="delete" value="Delete"></td>
                 </tr>
 
@@ -169,8 +193,18 @@ if (!$condition) {
     }
 }
 ?>
+<?php
+//Updating and Delete
+    if(isset($_GET['id']) && $_GET['id']!='')
+    {
+        echo $_GET['id'];
+    }
+
+?>
+
     </tbody>
 </table>
+</form>
 <form action="main.php" method="post">
     <p><?php echo 'Total Results: ', $total_rows ?></p>
     <p><?php $pageResult = $page; echo 'Page: ', ++$pageResult, ' of ', $total_pages ?></p>
