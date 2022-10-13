@@ -92,7 +92,7 @@ if($_POST['addBtn']) {
 ?>
 <?php
 if($_POST['add']) {
-    if($_SESSION["nextPK"] && $_POST['emp-brt-dt'] && $_POST['emp-fn'] && $_POST['emp-ln'] && $_POST['emp-g'] && $_POST['emp-hd']) {
+    if($_SESSION["nextPK"]!='' && !empty($_POST['emp-brt-dt']) && !empty($_POST['emp-fn']) && !empty($_POST['emp-ln']) && !empty($_POST['emp-g']) && !empty($_POST['emp-hd'])) {
         $emp_no =  $_SESSION["nextPK"];
         $birthDate  =  $_POST['emp-brt-dt'];
         $firstName  =  $_POST['emp-fn'];
@@ -135,8 +135,8 @@ if (!$condition) {
                 <td><?php echo $row['last_name'] ?></td>
                 <td><?php echo $row['gender'] ?></td>
                 <td><?php echo $row['hire_date'] ?></td>
-                <td><?php echo "<a href='req5.php?id=".$row['emp_no']."'><input type='button' name='add' value='Add/Edit'></a>"?></td>
-                <td><input type="submit" name="delete" value="Delete"></td>
+                <td><?php echo "<a href='editPage.php?id=".$row['emp_no']."'><input type='button' name='add' value='Add/Edit'></a>"?></td>
+                <td><?php echo "<a href='deletePage.php?id=".$row['emp_no']."'><input type='button' name='delete' value='Delete'></a>"?></td>
             </tr>
 
         <?php endwhile;
@@ -178,8 +178,8 @@ if (!$condition) {
                     <td><?php echo $row['last_name'] ?></td>
                     <td><?php echo $row['gender'] ?></td>
                     <td><?php echo $row['hire_date'] ?></td>
-                    <td><?php echo "<a href='main.php?id=".$row['emp_no']."'><input type='submit' name='add' value='Add/Edit'></a>;"?></td>
-                    <td><input type="submit" name="delete" value="Delete"></td>
+                    <td><?php echo "<a href='editPage.php?id=".$row['emp_no']."'><input type='button' name='add' value='Add/Edit'></a>"?></td>
+                    <td><?php echo "<a href='deletePage.php?id=".$row['emp_no']."'><input type='button' name='delete' value='Delete'></a>"?></td>
                 </tr>
 
             <?php

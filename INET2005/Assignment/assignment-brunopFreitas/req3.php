@@ -31,6 +31,27 @@ function findEmployee($condition) {
     closeDbConnection($conn);
 }
 
+function findEmployeeByID($id) {
+    $conn = getDbConnection();
+    $myQuerie = "SELECT " .
+        "* " .
+        "FROM " .
+        "employees.employees " .
+        "WHERE " .
+        "emp_no " .
+        "= " .
+        $id;
+
+    return $result = mysqli_query($conn,$myQuerie);
+    if(!$result)
+    {
+        die("Could not retrieve records from database: " . mysqli_error($conn));
+    } else {
+        return $result;
+    }
+    closeDbConnection($conn);
+}
+
 
 function findEmployeeLimit($condition, $start, $limit) {
     $conn = getDbConnection();
