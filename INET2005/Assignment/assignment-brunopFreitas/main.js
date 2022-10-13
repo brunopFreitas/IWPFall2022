@@ -1,31 +1,53 @@
 function checkInsertFields() {
-    const birthDate = document.getElementById('emp-brt-dt')
-    const firstName = document.getElementById('emp-fn')
-    const lastName = document.getElementById('emp-ln')
-    const gender = document.getElementById('emp-g')
-    const hireDate = document.getElementById('emp-hd')
+    const birthDate = document.getElementById('birthDate')
+    const firstName = document.getElementById('firstName')
+    const lastName = document.getElementById('lastName')
+    const gender = document.getElementById('gender')
+    const hireDate = document.getElementById('hireDate')
     const regex = /^\d{4}-\d{2}-\d{2}$/;
     if(birthDate.value.match(regex) === null) {
-        console.log("Data is not a match")
+        const removeElement = document.getElementById('birthDayAlert')
+        if (removeElement) {
+            removeElement.remove()
+        }
+        birthDate.style.borderColor = 'red';
+        const para = document.createElement("p");
+        para.id = 'birthDayAlert'
+        const node = document.createTextNode("Data format for birthday is YYYY-MM-DD");
+        para.appendChild(node);
+        const element = document.getElementById('form')
+        element.appendChild(para);
+        console.log(birthDate.attributes.status.value)
     } else {
-        console.log("It worked")
+        const removeElement = document.getElementById('birthDayAlert')
+        if (removeElement) {
+            removeElement.remove()
+        }
+        birthDate.style.borderColor = 'green';
+        birthDate.status = true;
+        console.log(birthDate.attributes.status.value)
+    }
+    if(hireDate.value.match(regex) === null) {
+        const removeElement = document.getElementById('hireDateAlert')
+        if (removeElement) {
+            removeElement.remove()
+        }
+        hireDate.style.borderColor = 'red';
+        const para = document.createElement("p");
+        para.id = 'hireDateAlert'
+        const node = document.createTextNode("Data format for hire date is YYYY-MM-DD");
+        para.appendChild(node);
+        const element = document.getElementById('form')
+        element.appendChild(para);
+    } else {
+        const removeElement = document.getElementById('hireDateAlert')
+        if (removeElement) {
+            removeElement.remove()
+        }
+        hireDate.style.borderColor = 'green';
+        hireDate.status = true;
     }
 
-}
-
-function checkFilled() {
-    const activeTextarea = document.activeElement;
-        activeTextarea.addEventListener('focusin', (event) => {
-            event.target.style.background = 'yellow';
-            event.target.style.fontStyle = 'italic';
-            event.target.parentElement.style.textDecoration = 'underline';
-        });
-
-        activeTextarea.addEventListener('focusout', (event) => {
-            event.target.style.background = '';
-            event.target.style.fontStyle = '';
-            event.target.parentElement.style.textDecoration = '';
-        });
 }
 
 function validateForm() {

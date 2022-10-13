@@ -2,7 +2,7 @@
 session_start();
 ob_start();
 
-$conn = mysqli_connect("localhost", "root", "inet2005", "user");
+$conn = mysqli_connect("localhost", "root", "inet2005", "employees");
 if(!$conn)
 {
     die("Could not connect to the database: " + mysqli_connect_error());
@@ -18,7 +18,7 @@ $loginPwd = mysqli_real_escape_string($conn, $loginPwd);
 
 $hash = hash("sha1", $loginPwd);
 
-$sql = "SELECT * FROM user.login WHERE user_name = '$loginUser' AND password = '$hash'";
+$sql = "SELECT * FROM employees.user WHERE user_name = '$loginUser' AND password = '$hash'";
 
 $result = mysqli_query($conn, $sql);
 if(!$result)
@@ -42,3 +42,10 @@ else
 }
 
 ob_end_flush();
+
+//CREATE TABLE employees.user (
+//    user_name varchar(255),
+//    password varchar(255)
+//);
+//
+//INSERT INTO employees.user (user_name, password) VALUES ('hr', SHA1('password'));

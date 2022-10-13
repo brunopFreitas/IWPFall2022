@@ -29,7 +29,7 @@ if(!isset($_POST['action'])) {
     //Previous button value
     $page = intval($_POST['page'])-1;
 }
-//
+// Defining condition for query
 if ($_POST['word'] && !$_POST['Clear']) {
     $_SESSION["condition"] = $_POST['word'];
 } elseif ($_POST['Clear']) {
@@ -42,7 +42,6 @@ if ($_POST['word'] && !$_POST['Clear']) {
 <html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="main.js"></script>
 <title>INET2005 - Assignment 1</title>
 </head>
 <body>
@@ -75,42 +74,7 @@ form {
 <th>Delete</th>
 </thead>
 <tbody>
-<p><input type="submit" name="addBtn" value="Add"></p>
-<?php
-if($_POST['addBtn']) {
-    $row = mysqli_fetch_assoc(getMyLastPK());
-//    Solving the PK issue
-    $myCurrentPK = $row['emp_no']+1;
-    $_SESSION["nextPK"] = $myCurrentPK;
-    echo "<tr>";
-    ?>
-    <td><input type='text' id='emp-nmb' name='emp-nmb' value="<?php echo $myCurrentPK;?>" disabled></td>
-<?php
-    echo "<td><input type='text' id='emp-brt-dt' name='emp-brt-dt'></td>";
-    echo "<td><input type='text' id='emp-fn' name='emp-fn'></td>";
-    echo "<td><input type='text' id='emp-ln' name='emp-ln'></td>";
-    echo "<td><input type='text' id='emp-g' name='emp-g'></td>";
-    echo "<td><input type='text' id='emp-hd' name='emp-hd'></td>";
-    echo "<td><input type='submit' name='add' value='Add' onClick='checkInsertFields()'></td>";
-    echo "</tr>";
-}
-?>
-<?php
-if($_POST['add']) {
-    if($_SESSION["nextPK"]!='' && !empty($_POST['emp-brt-dt']) && !empty($_POST['emp-fn']) && !empty($_POST['emp-ln']) && !empty($_POST['emp-g']) && !empty($_POST['emp-hd'])) {
-        $emp_no =  $_SESSION["nextPK"];
-        $birthDate  =  $_POST['emp-brt-dt'];
-        $firstName  =  $_POST['emp-fn'];
-        $lastName  =  $_POST['emp-ln'];
-        $gender  =  $_POST['emp-g'];
-        $hireDate =  $_POST['emp-hd'];
-        $result = addEmployee($emp_no, $birthDate, $firstName, $lastName, $gender, $hireDate);
-        echo "Number of rows affected: " , $result;
-    } else {
-
-    }
-}
-?>
+<a href='addPage.php'><input type='button' name='add' value='Insert Employee'></a>
 <?php
 // Displaying employee info
 if (!$condition) {
@@ -198,16 +162,7 @@ if (!$condition) {
     }
 }
 ?>
-<?php
-//Updating and Delete
-    if(isset($_GET['id']) && $_GET['id']!='')
-    {
-        echo $_GET['id'];
-    }
-
-?>
-
-    </tbody>
+</tbody>
 </table>
 </form>
 <form action="main.php" method="post">
