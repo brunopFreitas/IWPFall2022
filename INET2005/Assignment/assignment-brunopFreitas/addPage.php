@@ -47,11 +47,11 @@ if(isset($_POST['Submit'])) {
 <form action="addPage.php" method="post" id="form" <?php if ($showFormFlag==false){?>style="display:none"<?php } ?>>
     <p><input type="hidden" name="empNo" value="<?php echo $myCurrentPK?>"></p>
     <p>Birthdate: <input type="text" name="birthDate" id="birthDate" status="false"></p>
-    <p>First Name: <input type="text" name="firstName" id="firstName"></p>
-    <p>Last Name: <input type="text" name="lastName" id="lastName"></p>
-    <p>Gender: <input type="text" name="gender" id="gender"></p>
-    <p>Hire Date: <input type="text" name="hireDate" id="hireDate"></p>
-    <p><input type="button" name="Submit" value="Insert" onclick="checkInsertFields()"></p>
+    <p>First Name: <input type="text" name="firstName" id="firstName" status="false"></p>
+    <p>Last Name: <input type="text" name="lastName" id="lastName" status="false"></p>
+    <p>Gender: <input type="text" name="gender" id="gender" status="false"></p>
+    <p>Hire Date: <input type="text" name="hireDate" id="hireDate" status="false"></p>
+    <p><input type="button" name="Submit" id="Submit" value="Insert" onclick="validateForm()"></p>
 </form>
 <form action="addPage.php" method="post">
     <p><input type="submit" name="logout" value="Logout" /></p>

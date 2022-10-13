@@ -46,13 +46,15 @@ if ($_POST['word'] && !$_POST['Clear']) {
 </head>
 <body>
 <style>
-th, tr, td { border: solid 1px black;}
+th, tr, td {
+    border: solid 1px black;
+}
+#edit {
+    width:100%;
+}
 form {
     margin: 0;
     padding: 0;
-}
-#emp-nmb, textarea {
-    background-color: lightgray;
 }
 </style>
 <h1>INET2005 - Bruno Freitas - Assignment 1</h1>
@@ -104,7 +106,7 @@ if (!$condition) {
                 <td><?php echo $row['last_name'] ?></td>
                 <td><?php echo $row['gender'] ?></td>
                 <td><?php echo $row['hire_date'] ?></td>
-                <td><?php echo "<a href='editPage.php?id=".$row['emp_no']."'><input type='button' name='add' value='Add/Edit'></a>"?></td>
+                <td><?php echo "<a href='editPage.php?id=".$row['emp_no']."'><input type='button' name='add' value='Edit' id='edit'></a>"?></td>
                 <td><?php echo "<a href='deletePage.php?id=".$row['emp_no']."'><input type='button' name='delete' value='Delete'></a>"?></td>
             </tr>
 
@@ -133,12 +135,11 @@ if (!$condition) {
         }
         $start = $page*$maxRows;
         if ($start > $total_rows) {
-            $start = $total_rows;
+            $start = $total_rows-1;
         }
         $result = findEmployeeLimit($condition,$start, $maxRows);
         $row = mysqli_fetch_assoc($result);
-        if($row!=0) {
-            while($row = mysqli_fetch_assoc($result)):
+        while($row = mysqli_fetch_assoc($result)):
                 ?>
                 <tr>
                     <td><?php echo $row['emp_no'] ?></td>
@@ -147,15 +148,11 @@ if (!$condition) {
                     <td><?php echo $row['last_name'] ?></td>
                     <td><?php echo $row['gender'] ?></td>
                     <td><?php echo $row['hire_date'] ?></td>
-                    <td><?php echo "<a href='editPage.php?id=".$row['emp_no']."'><input type='button' name='add' value='Add/Edit'></a>"?></td>
+                    <td><?php echo "<a href='editPage.php?id=".$row['emp_no']."'><input type='button' name='add' value='Edit' id='edit'></a>"?></td>
                     <td><?php echo "<a href='deletePage.php?id=".$row['emp_no']."'><input type='button' name='delete' value='Delete'></a>"?></td>
                 </tr>
 
-            <?php
-            endwhile;
-        }else {
-            echo "<p>Nothing to display.</p>";
-        }
+            <?php endwhile;
     } else {
         $total_pages = 1;
         echo "<p>No results for $condition</p>";

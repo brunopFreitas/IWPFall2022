@@ -1,6 +1,7 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="main.js"></script>
     <title>INET2005 - Assignment 1</title>
     <style>
         form {
@@ -40,15 +41,15 @@ if(isset($_POST['Submit']) && isset($_POST['deleteConfirm'])) {
     }
 }
 ?>
-<form action="deletePage.php" method="post" <?php if ($showFormFlag==false){?>style="display:none"<?php } ?>>
+<form action="deletePage.php" method="post" id="form" <?php if ($showFormFlag==false){?>style="display:none"<?php } ?>>
     <p><input type="hidden" name="empNo" value="<?php echo $row['emp_no']?>"></p>
-    <p>Birthdate: <input type="text" name="birthDate" value="<?php echo $row['birth_date']?>" disabled></p>
-    <p>First Name: <input type="text" name="firstName" value="<?php echo $row['first_name']?>" disabled></p>
-    <p>Last Name: <input type="text" name="lastName" value="<?php echo $row['last_name']?>" disabled></p>
-    <p>Gender: <input type="text" name="gender" value="<?php echo $row['gender']?>" disabled></p>
-    <p>Hire Date: <input type="text" name="hireDate" value="<?php echo $row['hire_date']?>" disabled></p>
-    <p>Confirm delete? <input type="checkbox" name="deleteConfirm"></p>
-    <p><input type="submit" name="Submit" value="Delete"></p>
+    <p>Birthdate: <input type="text" name="birthDate" id="birthDate" status="false" value="<?php echo $row['birth_date']?>" disabled></p>
+    <p>First Name: <input type="text" name="firstName" id="firstName" status="false" value="<?php echo $row['first_name']?>" disabled></p>
+    <p>Last Name: <input type="text" name="lastName" id="lastName" status="false" value="<?php echo $row['last_name']?>" disabled></p>
+    <p>Gender: <input type="text" name="gender" id="gender" status="false" value="<?php echo $row['gender']?>" disabled></p>
+    <p>Hire Date: <input type="text" name="hireDate" id="hireDate" status="false" value="<?php echo $row['hire_date']?>" disabled></p>
+    <p id="checkboxText">Confirm delete? <input type="checkbox" name="deleteConfirm" id="deleteConfirm"></p>
+    <p><input type="button" name="Submit" id="Submit" value="Delete" onclick="validateFormDeletion()"></p>
 </form>
 <form action="deletePage.php" method="post">
     <p><input type="submit" name="logout" value="Logout" /></p>

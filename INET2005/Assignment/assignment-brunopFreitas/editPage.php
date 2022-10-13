@@ -1,6 +1,7 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="main.js"></script>
     <title>INET2005 - Assignment 1</title>
     <style>
         form {
@@ -44,14 +45,14 @@ if(isset($_POST['Submit'])) {
     }
 }
 ?>
-<form action="editPage.php" method="post" <?php if ($showFormFlag==false){?>style="display:none"<?php } ?>>
+<form action="editPage.php" method="post" id="form" <?php if ($showFormFlag==false){?>style="display:none"<?php } ?>>
     <p><input type="hidden" name="empNo" value="<?php echo $row['emp_no']?>"></p>
-    <p>Birthdate: <input type="text" name="birthDate" value="<?php echo $row['birth_date']?>"></p>
-    <p>First Name: <input type="text" name="firstName" value="<?php echo $row['first_name']?>"></p>
-    <p>Last Name: <input type="text" name="lastName" value="<?php echo $row['last_name']?>"></p>
-    <p>Gender: <input type="text" name="gender" value="<?php echo $row['gender']?>"></p>
-    <p>Hire Date: <input type="text" name="hireDate" value="<?php echo $row['hire_date']?>"></p>
-    <p><input type="submit" name="Submit" value="Update"></p>
+    <p>Birthdate: <input type="text" name="birthDate" id="birthDate" status="false" value="<?php echo $row['birth_date']?>"></p>
+    <p>First Name: <input type="text" name="firstName" id="firstName" status="false" value="<?php echo $row['first_name']?>"></p>
+    <p>Last Name: <input type="text" name="lastName" id="lastName" status="false" value="<?php echo $row['last_name']?>"></p>
+    <p>Gender: <input type="text" name="gender" id="gender" status="false" value="<?php echo $row['gender']?>"></p>
+    <p>Hire Date: <input type="text" name="hireDate" id="hireDate" status="false" value="<?php echo $row['hire_date']?>"></p>
+    <p><input type="button" name="Submit" id="Submit" value="Update" onclick="validateForm()"></p>
 </form>
 <form action="editPage.php" method="post">
     <p><input type="submit" name="logout" value="Logout" /></p>
