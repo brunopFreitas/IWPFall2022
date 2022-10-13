@@ -15,7 +15,15 @@
 <?php
 require_once ('req3.php');
 require_once ('req7.php');
+require_once ('isLoggedIn.php');
+require_once ('logOut.php');
 $showFormFlag=true;
+//Check if Logged In
+checkIfLoggedIn();
+// Login Out
+if(isset($_POST['logout'])) {
+    logOut();
+}
 if(isset($_GET['id']) && $_GET['id']!='')
 {
     $result = findEmployeeByID($_GET['id']);
@@ -30,8 +38,6 @@ if(isset($_POST['Submit']) && isset($_POST['deleteConfirm'])) {
         echo "<h2>Employee was deleted!</h2> ";
         echo "<h2>Number of rows affected: $result</h2> ";
     }
-} elseif (isset($_POST['Submit']) && !isset($_POST['deleteConfirm'])) {
-    echo "<h3>Please click the checkbox to confirm the deletion!</h3> ";
 }
 ?>
 <form action="deletePage.php" method="post" <?php if ($showFormFlag==false){?>style="display:none"<?php } ?>>
@@ -44,6 +50,9 @@ if(isset($_POST['Submit']) && isset($_POST['deleteConfirm'])) {
     <p>Confirm delete? <input type="checkbox" name="deleteConfirm"></p>
     <p><input type="submit" name="Submit" value="Delete"></p>
 </form>
+<form action="deletePage.php" method="post">
+    <p><input type="submit" name="logout" value="Logout" /></p>
+</form
 </body>
 </html>
 

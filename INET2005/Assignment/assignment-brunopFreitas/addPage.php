@@ -9,11 +9,10 @@
     </style>
 </head>
 <body>
-<h1>Update Form</h1>
+<h1>Insert Form</h1>
 <a href="main.php">Go Back</a>
 <?php
-require_once ('req3.php');
-require_once ('req5.php');
+require_once ('req4.php');
 require_once ('isLoggedIn.php');
 require_once ('logOut.php');
 $showFormFlag=true;
@@ -23,11 +22,7 @@ checkIfLoggedIn();
 if(isset($_POST['logout'])) {
     logOut();
 }
-if(isset($_GET['id']) && $_GET['id']!='')
-{
-    $result = findEmployeeByID($_GET['id']);
-    $row = mysqli_fetch_assoc($result);
-    }
+
 ?>
 <?php
 if(isset($_POST['Submit'])) {
@@ -58,5 +53,3 @@ if(isset($_POST['Submit'])) {
 </form>
 </body>
 </html>
-
-

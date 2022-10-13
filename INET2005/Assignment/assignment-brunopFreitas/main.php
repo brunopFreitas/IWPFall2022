@@ -1,15 +1,21 @@
 <?php
-session_start();
 $fileList = array(
     'req1.php',
     'req3.php',
-    'req4.php'
+    'req4.php',
+    'isLoggedIn.php',
+    'logOut.php'
 );
-
 $dirPath = '';
 foreach($fileList as $fileName)
 {
     include_once($dirPath.$fileName);
+}
+//Check if Logged In
+checkIfLoggedIn();
+// Login Out
+if(isset($_POST['logout'])) {
+    logOut();
 }
 //Global Variables
 $maxRows = 25;
@@ -36,6 +42,7 @@ if ($_POST['word'] && !$_POST['Clear']) {
 <html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="main.js"></script>
 <title>INET2005 - Assignment 1</title>
 </head>
 <body>
@@ -50,7 +57,6 @@ form {
 }
 </style>
 <h1>INET2005 - Bruno Freitas - Assignment 1</h1>
-<p>REQ 1, 2, 3</p>
 <form action="main.php" method="post">
 <!--    Sticky Form-->
     <p>Search: <input type="text" name="word" value="<?php echo $condition?>"></p>
@@ -85,8 +91,7 @@ if($_POST['addBtn']) {
     echo "<td><input type='text' id='emp-ln' name='emp-ln'></td>";
     echo "<td><input type='text' id='emp-g' name='emp-g'></td>";
     echo "<td><input type='text' id='emp-hd' name='emp-hd'></td>";
-    echo "<td><input type='submit' name='add' value='Add'></td>";
-    echo "<td><input type='submit' name='delete' value='Delete'></td>";
+    echo "<td><input type='submit' name='add' value='Add' onClick='checkInsertFields()'></td>";
     echo "</tr>";
 }
 ?>
@@ -212,6 +217,9 @@ if (!$condition) {
     <input type="submit" name="action" value="Previous" />
     <input type="submit" name="action" value="Next" />
     <p></p>
+</form>
+<form action="main.php" method="post">
+    <p><input type="submit" name="logout" value="Logout" /></p>
 </form>
 </body>
 
