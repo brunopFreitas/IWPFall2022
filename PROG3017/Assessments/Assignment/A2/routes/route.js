@@ -65,7 +65,7 @@ router.delete("/:Id", async (req, res) => {
         if(deletedPokemon.deletedCount===0) {
             res.status(404).send("Not Found")
         } else {
-            res.json(deletedPokemon);
+            res.status(204).json(deletedPokemon);
         }
     } catch(err) {
         res.json({message: err});

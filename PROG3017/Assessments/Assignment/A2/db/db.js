@@ -4,7 +4,6 @@ module.exports = {
         const mongoose = require('mongoose');
 
         // Set up default mongoose connection
-        console.log(connString)
 
         mongoose.connect(connString, {useNewUrlParser: true, useUnifiedTopology: true}, (err) => {
             if (!err) {
