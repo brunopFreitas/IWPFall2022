@@ -15,6 +15,7 @@ body {
 }
 
 .container {
+    /* Max Width */
     width: 1200px;
     margin: 0 auto;
     display: flex;
@@ -28,6 +29,7 @@ body {
 .split div {
     display: flex;
     flex: 1 1 50%;
+    /* Static Height */
     height: 450px;
     flex-direction: column;
     justify-content: center;
@@ -37,21 +39,21 @@ body {
 }
 
 .split-left {
-    background-color: transparent;
+    background-color: rgba(0,0,0,0.2);
+}
+
+.split-left img {
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .split-right {
     background-color: green;
 }
 
-.logo {
-    margin-bottom: 30px;
-}
-
 .login {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;    
     margin: 0;
     padding: 0;
@@ -61,8 +63,24 @@ body {
     margin: 10px;
 }
 
-.login input {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+.login input[type="text"] {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 200px;
+}
+
+.login input[type="button"] {
+    width: 80px;
+    height: 30px;
+}
+
+.imgContainer {
+    display: flex;
+    height: auto;
+    width: 180px;
+}
+
+.imgContainer img {
+    object-fit: contain;
 }
 
 
