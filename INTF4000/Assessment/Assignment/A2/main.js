@@ -20,7 +20,7 @@ app.whenReady().then(() => {
     const mainWindow = createWindow()
 
     mainWindow.webContents.once('dom-ready', () => {
-        mainWindow.webContents.send('say-hello', 'This message comes from the backend')
+        mainWindow.webContents.send('sendToFront', albumObject)
     });   
 
     app.on('activate', () => {
@@ -41,7 +41,7 @@ const url = require('url')
 
 // Path to mp3 files
 
-const directoryPath = path.join('C:', 'Users', 'w0448225', 'Documents', 'brunoW0448225', 'INTF4000', 'Albuns', 'The Smiths', 'Hatful Of Hollow')
+const directoryPath = path.join('C:', 'Users', 'w0448225', 'Documents', 'W0448225', 'INTF4000', 'Album', 'The Smiths', 'Hatful Of Hollow')
 
 // albumObject
 
