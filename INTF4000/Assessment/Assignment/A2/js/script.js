@@ -1,19 +1,8 @@
-const { ipcRenderer } = require('electron');
+const hello = document.getElementsByClassName('hello')
 
-        /** Define channel name */
-        const CHANNEL_NAME = 'main';
-
-        /** Create a processor for a button's click event */
-        const clickButton = () => {
-          /** Message to be sent */
-          let message = 'ping';
-
-          /** Show response for a sync IPC request */
-          console.log(ipcRenderer.sendSync(CHANNEL_NAME, message));
-        }
-
-        // YT tutorial
-        // File is the variable that holds the filepath and fileURL
-        // audio.play will play the audio?
-        let audio = new Audio(file.filePaths[0]);
-        audio.play();
+window.electronAPI.onSayHello((_event, value) => {
+    /*const oldValue = Number(counter.innerText)
+    const newValue = oldValue + value
+    counter.innerText = newValue*/
+    hello.innerHTML = value
+})
