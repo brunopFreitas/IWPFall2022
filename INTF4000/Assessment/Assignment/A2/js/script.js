@@ -11,3 +11,9 @@ const { ipcRenderer } = require('electron');
           /** Show response for a sync IPC request */
           console.log(ipcRenderer.sendSync(CHANNEL_NAME, message));
         }
+
+        // YT tutorial
+        // File is the variable that holds the filepath and fileURL
+        // audio.play will play the audio?
+        let audio = new Audio(file.filePaths[0]);
+        audio.play();

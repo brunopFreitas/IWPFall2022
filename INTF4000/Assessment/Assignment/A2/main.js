@@ -1,14 +1,10 @@
 const path = require('path')
 const fs = require('fs')
 const url = require('url')
-const {
-  app,
-  BrowserWindow,
-  ipcMain
-} = require('electron')
+let jsaudio = require('jsmediatags')
 
 // Path to mp3 files
-const directoryPath = path.join('/home/bruno/Documents/NSCC/Fall2022/INFT4000/Albuns/', 'The Smiths/Hatful Of Hollow');
+const directoryPath = "C:/\Users/\w0448225/\Documents/\BrunoW0448225/\INTF4000/\Albuns/\The Smiths/\Hatful Of Hollow"
 
 // albumObject
 
@@ -21,6 +17,7 @@ let files = fs.readdirSync(directoryPath, function (err, files) {
     return console.log('Unable to scan directory: ' + err);
   }
 })
+
 //listing all files using forEach
 files.forEach(function (file) {
   let songObject = {
@@ -28,11 +25,38 @@ files.forEach(function (file) {
   }
   songObject["fileName"] = path.parse(file).name
   songObject["fileURL"] = url.pathToFileURL(path.resolve(directoryPath, file)).href
+  songObject["filePath"] = path.resolve(directoryPath, file)
   albumObject.push(songObject)
 });
 
 console.log("this is the result: ", albumObject);
 
+// Music metadata
+
+
+// albumObject.forEach(function(albumElement) {
+//   jsaudio.read(albumElement.filePath, {
+//     onSuccess: function(tag) {
+//       console.log(tag);
+//     },
+//     onError: function(error) {
+//       console.log(':(', error.type, error.info);
+//     }
+//   });
+// })
+
+
+
+
+
+// ***************** ELECTRON PROCESS ******************
+const {
+  app,
+  BrowserWindow,
+  ipcMain
+} = require('electron')
+
+// Electron process Start
 const createWindow = () => {
   const win = new BrowserWindow({
     width: 400,
@@ -53,6 +77,8 @@ app.whenReady().then(() => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
 
+
+  // How to IPC?!
   // Sending info to html page
   const CHANNEL_NAME = 'main'
 
