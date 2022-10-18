@@ -1,4 +1,4 @@
-const hello = document.getElementsByClassName('hello')
+const hello = document.getElementById('hello')
 
 window.electronAPI.onSayHello((_event, value) => {
     /*const oldValue = Number(counter.innerText)
