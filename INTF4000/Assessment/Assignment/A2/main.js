@@ -41,14 +41,15 @@ const url = require('url')
 
 // Path to mp3 files
 
-const directoryPath = path.join('C:', 'Users', 'w0448225', 'Documents', 'W0448225', 'INTF4000', 'Album', 'The Smiths', 'Hatful Of Hollow')
+const songDirectoryPath = path.join('C:', 'Users', 'w0448225', 'Documents', 'brunoW0448225', 'INTF4000', 'Albuns', 'The Smiths', 'Hatful Of Hollow', 'song')
+const imgDirectoryPath = path.join('C:', 'Users', 'w0448225', 'Documents', 'brunoW0448225', 'INTF4000', 'Albuns', 'The Smiths', 'Hatful Of Hollow',  'img')
 
 // albumObject
 
 let albumObject = []
 
-// Reading files
-let files = fs.readdirSync(directoryPath, function (err, files) {
+// Reading Songs
+let songs = fs.readdirSync(songDirectoryPath, function (err, files) {
   //handling error
   if (err) {
     return console.log('Unable to scan directory: ' + err);
@@ -56,14 +57,31 @@ let files = fs.readdirSync(directoryPath, function (err, files) {
 })
 
 //listing all files using forEach
-files.forEach(function (file) {
+songs.forEach(function (song) {
   let songObject = {
 
   }
-  songObject["fileName"] = path.parse(file).name
-  songObject["fileURL"] = url.pathToFileURL(path.resolve(directoryPath, file)).href
-  songObject["filePath"] = path.resolve(file)
+  songObject["songName"] = path.parse(song).name
+  songObject["songURL"] = url.pathToFileURL(path.resolve(songDirectoryPath, song)).href
+  songObject["songPath"] = path.resolve(song)
   albumObject.push(songObject)
 });
 
-console.log(albumObject)
+// Reading cover
+let covers = fs.readdirSync(imgDirectoryPath, function (err, files) {
+  //handling error
+  if (err) {
+    return console.log('Unable to scan directory: ' + err);
+  }
+})
+
+//listing all files using forEach
+covers.forEach(function (cover) {
+  let songObject = {
+
+  }
+  songObject["coverName"] = path.parse(cover).name
+  songObject["coverURL"] = url.pathToFileURL(path.resolve(imgDirectoryPath, cover)).href
+  songObject["coverPath"] = path.resolve(cover)
+  albumObject.push(songObject)
+});

@@ -20,24 +20,23 @@
   <!-- Icon hosted at https://www.base64-image.de/ -->
   <h1>HornHand Player<i class="hornHands"></i></h1>
   <h2>Name of Song Goes here!</h2>
-  <h3 id="hello">Backend place</h3>
   <!-- Bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
   </script>
   <!-- Image from https://unsplash.com/ -->
-  <img class="img-fluid img-thumbnail" src="img/singer.jpg" alt="Singer">
+  <img class="img-fluid img-thumbnail" src="img/singer.jpg" alt="Singer" id="cover">
+  <audio controls autoplay id="audio"></audio>
   <div class="input-group mb-3 select">
     
-    <table id="musicTable">
+    <table id="musicTable" class="table table-dark table-bordered table-hover mt-3">
       <thead>
         <tr>
-          <th scope="col">Name</th>
+          <th scope="col" id="albumInfo">Song Name</th>
         </tr>
       </thead>
     </table>
   </div>
-  <audio controls autoplay></audio>
 </body>
 
 </html>
