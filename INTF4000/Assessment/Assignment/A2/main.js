@@ -34,15 +34,18 @@ app.on('window-all-closed', () => {
 })
 
 
-// **************** PROCESSESS ************************
+// **************** BACKEND PROCESSESS ************************
 
 const fs = require('fs')
 const url = require('url')
 
 // Path to mp3 files
 
-const songDirectoryPath = path.join('C:', 'Users', 'w0448225', 'Documents', 'brunoW0448225', 'INTF4000', 'Albuns', 'The Smiths', 'Hatful Of Hollow', 'song')
-const imgDirectoryPath = path.join('C:', 'Users', 'w0448225', 'Documents', 'brunoW0448225', 'INTF4000', 'Albuns', 'The Smiths', 'Hatful Of Hollow',  'img')
+// Path to the song folder 
+const songDirectoryPath = "C:\\Users\\w0448225\\Documents\\brunoW0448225\\INTF4000\\Albuns\\The Smiths\\Hatful Of Hollow\\song"
+
+// Path to the img folder
+const imgDirectoryPath = "C:\\Users\\w0448225\\Documents\\brunoW0448225\\INTF4000\\Albuns\\The Smiths\\Hatful Of Hollow\\img"
 
 // albumObject
 

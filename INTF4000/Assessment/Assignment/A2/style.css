@@ -30,3 +30,7 @@ body h2 {
 .select {
     font-family: 'Kanit';
 }
+
+#track {
+    cursor: pointer;
+}
