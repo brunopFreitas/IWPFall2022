@@ -34,3 +34,9 @@ body h2 {
 #track {
     cursor: pointer;
 }
+
+#albumInfo {
+    color: #A8577B;
+    font-family: 'Kanit';
+    font-size: 20px;
+}
