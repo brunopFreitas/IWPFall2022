@@ -1,7 +1,99 @@
 const express = require(`express`)
+const bcrypt = require(`bcrypt`)
 const router = express.Router()
-const Pokemon = require('../models/pokemon')
+var jwt = require('jsonwebtoken')
+require("dotenv/config")
 
+const {
+    Pokemon
+} = require('../models/pokemon')
+const {
+    User
+} = require('../models/pokemon')
+
+
+// POST NEW USER
+router.post("/user/register", async (req, res) => {
+
+    const user = new User({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        password: req.body.password
+    });
+
+    //Querying mongo
+    const checkForEmail = await User.findOne({
+        email: user.email
+    })
+
+    if (!checkForEmail) {
+
+        // encrypting
+        user.password = await bcrypt.hash(user.password, 1)
+
+        //Saving
+        user.save()
+            .then(data => {
+                newJWT = jwt.sign(req.body.email, process.env.JWT)
+                res.header("X-auth-token", newJWT)
+                res.status(201).json({
+                    id: data._id,
+                    email: data.email
+                });
+            })
+            .catch(err => {
+                res.status(422).json({
+                    message: err
+                })
+            })
+
+    } else {
+        res.status(400).json({
+            message: "email already registered."
+        })
+    }
+
+})
+
+// POST LOGIN
+router.post("/user/login", async (req, res) => {
+
+    const user = new User({
+        email: req.body.email,
+        password: req.body.password
+    });
+
+    //Querying mongo
+    const checkUser = await User.findOne({
+        email: user.email
+    })
+
+    if (checkUser) {
+
+        // encrypting
+        bcrypt.compare(user.password, checkUser.password, function (err, result) {
+
+            
+            if (result) {
+                 newJWT = jwt.sign(req.body.email, process.env.JWT)
+                 res.header("X-auth-token", newJWT)
+                 res.status(200).send()
+            } else {
+                res.status(401).json({
+                    message: "Invalid Username or Password"
+                })
+            }
+
+        })
+
+    } else {
+        res.status(401).json({
+            message: "Invalid Username or Password"
+        })
+    }
+
+})
 
 
 // GET
@@ -45,30 +137,36 @@ router.post("/", (req, res) => {
 // GET BY ID
 
 router.get("/:Id", async (req, res) => {
-    try{
+    try {
         const specificPokemon = await Pokemon.findById(req.params.Id);
-        if(!specificPokemon) {
-            res.status(404).send("Not Found");    
+        if (!specificPokemon) {
+            res.status(404).send("Not Found");
         } else {
             res.status(200).json(specificPokemon);
         }
-    } catch(err) {
-        res.json({message: err});
+    } catch (err) {
+        res.json({
+            message: err
+        });
     }
 })
 
 // DELETE
 
 router.delete("/:Id", async (req, res) => {
-    try{
-        const deletedPokemon= await Pokemon.deleteOne({ _id: req.params.Id});
-        if(deletedPokemon.deletedCount===0) {
+    try {
+        const deletedPokemon = await Pokemon.deleteOne({
+            _id: req.params.Id
+        });
+        if (deletedPokemon.deletedCount === 0) {
             res.status(404).send("Not Found")
         } else {
             res.status(204).json(deletedPokemon);
         }
-    } catch(err) {
-        res.json({message: err});
+    } catch (err) {
+        res.json({
+            message: err
+        });
     }
 });
 
@@ -76,9 +174,11 @@ router.delete("/:Id", async (req, res) => {
 // PUT
 
 router.put("/:Id", async (req, res) => {
-    try{
-        const updatedPokemon = await Pokemon.updateOne({ _id: req.params.Id},
-             {$set: {
+    try {
+        const updatedPokemon = await Pokemon.updateOne({
+            _id: req.params.Id
+        }, {
+            $set: {
                 id: req.body.id,
                 num: req.body.num,
                 name: req.body.name,
@@ -88,15 +188,18 @@ router.put("/:Id", async (req, res) => {
                 weight: req.body.weight,
                 weaknesses: req.body.weaknesses,
                 next_evolution: req.body.next_evolution
-            }})
-            if(updatedPokemon.matchedCount===0) {
-                res.status(404).send("Not Found");   
-            } else {
-                res.status(204).json(updatedPokemon)
             }
-    } catch(err) {
-            res.status(422).json({message: err});
+        })
+        if (updatedPokemon.matchedCount === 0) {
+            res.status(404).send("Not Found");
+        } else {
+            res.status(204).json(updatedPokemon)
         }
+    } catch (err) {
+        res.status(422).json({
+            message: err
+        });
+    }
 })
 
 module.exports = router

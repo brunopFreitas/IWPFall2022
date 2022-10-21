@@ -3,7 +3,7 @@ const app = express()
 const route = require(`./routes/route`)
 const bodyParser = require("body-parser")
 const db = require('./db/db')
-require("dotenv/config");
+require("dotenv/config")
 
 mongoDB = db.getDb(process.env.DB_CONNECT)
 
