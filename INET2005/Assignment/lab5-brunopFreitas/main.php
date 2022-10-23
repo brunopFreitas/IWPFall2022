@@ -4,7 +4,10 @@
 <?php
 $fileList = array(
     'req1.php',
-    'req3.php'
+    'req3.php',
+    'isLoggedIn.php',
+    'logOut.php',
+    'debbug.php'
 );
 $dirPath = '';
 foreach($fileList as $fileName)
@@ -12,14 +15,15 @@ foreach($fileList as $fileName)
     include_once($dirPath.$fileName);
 }
 //Check if Logged In
-//checkIfLoggedIn();
+checkIfLoggedIn();
 // Login Out
-//if(isset($_POST['logout'])) {
-//    logOut();
-//}
+if(isset($_POST['logout'])) {
+    logOut();
+}
 //Global Variables
 $maxRows = 25;
 //Defining the page value
+
 if(!isset($_POST['action'])) {
     $page = 0;
 } elseif ($_POST['action'] == 'Next') {
@@ -29,14 +33,21 @@ if(!isset($_POST['action'])) {
     //Previous button value
     $page = intval($_POST['page'])-1;
 }
+if($_SESSION["condition"] && !isset($_POST['Clear'])) {
+    $condition = $_SESSION["condition"];
+} else {
+    $condition = '';
+}
+
 // Defining condition for query
-if ($_POST['word'] && !$_POST['Clear']) {
+if (isset($_POST['word']) && isset($_POST['Submit'])) {
     $_SESSION["condition"] = $_POST['word'];
-} elseif ($_POST['Clear']) {
+    $condition = $_SESSION["condition"];
+} elseif (isset($_POST['Clear'])) {
     $_SESSION["condition"] = '';
+    $condition = $_SESSION["condition"];
     $page = 0;
 }
-    $condition = $_SESSION["condition"];
 ?>
 
 <html lang="en">
@@ -82,7 +93,8 @@ form {
 if (!$condition) {
     //    Local variables
     //    Result quantity
-    $total_rows = mysqli_num_rows(countEmployee());
+
+    $total_rows = countEmployee()->num_rows;
     if ($total_rows > 0) {
         //      Page quantity
         $total_pages = ceil($total_rows/$maxRows);
@@ -97,7 +109,7 @@ if (!$condition) {
             $start = $total_rows-1;
         }
         $result = displayEmployeePage($start, $maxRows);
-        while($row = mysqli_fetch_assoc($result)):
+        while($row = $result->fetch_assoc()):
             ?>
             <tr>
                 <td><?php echo $row['emp_no'] ?></td>
@@ -123,7 +135,7 @@ if (!$condition) {
 
     //    Local variables
     //    Result quantity
-    $total_rows = mysqli_num_rows(findEmployee($condition));
+    $total_rows = findEmployee($condition)->num_rows;
     if ($total_rows>0) {
         //    Page quantity
         $total_pages = ceil($total_rows/$maxRows);
@@ -138,8 +150,7 @@ if (!$condition) {
             $start = $total_rows-1;
         }
         $result = findEmployeeLimit($condition,$start, $maxRows);
-        $row = mysqli_fetch_assoc($result);
-        while($row = mysqli_fetch_assoc($result)):
+        while($row = $result->fetch_assoc()):
                 ?>
                 <tr>
                     <td><?php echo $row['emp_no'] ?></td>

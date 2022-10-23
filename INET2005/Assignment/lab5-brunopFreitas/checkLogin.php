@@ -1,12 +1,9 @@
 <?php
+require_once ("dbconn.php");
 session_start();
 ob_start();
 
-$conn = mysqli_connect("localhost", "root", "inet2005", "employees");
-if(!$conn)
-{
-    die("Could not connect to the database: " + mysqli_connect_error());
-}
+$conn = getDbConnection();
 
 $loginUser = $_POST['loginUser'];
 $loginPwd = $_POST['loginPwd'];
@@ -18,17 +15,21 @@ $loginPwd = mysqli_real_escape_string($conn, $loginPwd);
 
 $hash = hash("sha1", $loginPwd);
 
-$sql = "SELECT * FROM employees.user WHERE user_name = '$loginUser' AND password = '$hash'";
+// prepare and bind
+$sql = $conn->prepare("SELECT * FROM employees.user WHERE user_name = ? AND password = ?");
+$sql->bind_param("ss", $loginUser, $hash);
+$sql->execute();
+$result = $sql->get_result();
+$sql->close();
 
-$result = mysqli_query($conn, $sql);
 if(!$result)
 {
     die("An error occurred in querying the database: " + mysqli_error($conn));
 }
 
-$count = mysqli_num_rows($result);
+$count = $result->num_rows;
 
-mysqli_close($conn);
+closeDbConnection($conn);
 
 if($count == 1)
 {
