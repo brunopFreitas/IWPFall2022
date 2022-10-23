@@ -21,5 +21,5 @@
 
     function closeDbConnection($conn): void
     {
-        closeDbConnection($conn);
+        mysqli_close($conn);
     }
