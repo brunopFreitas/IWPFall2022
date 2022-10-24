@@ -138,7 +138,6 @@ if (!$condition) {
             $start = $total_rows-1;
         }
         $result = findEmployeeLimit($condition,$start, $maxRows);
-        $row = mysqli_fetch_assoc($result);
         while($row = mysqli_fetch_assoc($result)):
                 ?>
                 <tr>
