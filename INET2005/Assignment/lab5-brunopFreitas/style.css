@@ -1,0 +1,48 @@
+html, body {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    background-color: darkcyan;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    margin: 10px;
+}
+
+th, tr, td {
+    border: solid 1px black;
+}
+#edit {
+    width:100%;
+}
+form {
+    margin: 5px;
+    padding: 0;
+}
+
+#loginPage {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#loginForm {
+    display: inline-block;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-self: center;
+}
+
+#firstPage {
+    border: solid 1px black;
+    background-color: lightgray;
+}
+
+

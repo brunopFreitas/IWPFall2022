@@ -53,137 +53,130 @@ if (isset($_POST['word']) && isset($_POST['Submit'])) {
 <html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
 <title>INET2005 - Assignment 1</title>
 </head>
 <body>
-<style>
-th, tr, td {
-    border: solid 1px black;
-}
-#edit {
-    width:100%;
-}
-form {
-    margin: 0;
-    padding: 0;
-}
-</style>
 <h1>INET2005 - Bruno Freitas - Assignment 1</h1>
-<form action="main.php" method="post">
-<!--    Sticky Form-->
-    <p>Search: <input type="text" name="word" value="<?php echo $condition?>"></p>
-    <p><input type="submit" name="Submit" value="Search"><input type="submit" name="Clear" value="Clear"></p>
-</form>
-<form action="main.php" method="post">
-<table>
-<thead>
-<th>Employee Number</th>
-<th>Birth Date</th>
-<th>First Name</th>
-<th>Last Name</th>
-<th>Gender</th>
-<th>Hire Date</th>
-<th>Add/Edit</th>
-<th>Delete</th>
-</thead>
-<tbody>
-<a href='addPage.php'><input type='button' name='add' value='Insert Employee'></a>
-<?php
-// Displaying employee info
-if (!$condition) {
-    //    Local variables
-    //    Result quantity
 
-    $total_rows = countEmployee()->num_rows;
-    if ($total_rows > 0) {
-        //      Page quantity
-        $total_pages = ceil($total_rows/$maxRows);
-        if ($page < 0) {
-            $page = 0;
-        }
-        if ($page+1 >= $total_pages) {
-            $page = $total_pages-1;
-        }
-        $start = $page*$maxRows;
-        if ($start > $total_rows) {
-            $start = $total_rows-1;
-        }
-        $result = displayEmployeePage($start, $maxRows);
-        while($row = $result->fetch_assoc()):
-            ?>
-            <tr>
-                <td><?php echo $row['emp_no'] ?></td>
-                <td><?php echo $row['birth_date'] ?></td>
-                <td><?php echo $row['first_name'] ?></td>
-                <td><?php echo $row['last_name'] ?></td>
-                <td><?php echo $row['gender'] ?></td>
-                <td><?php echo $row['hire_date'] ?></td>
-                <td><?php echo "<a href='editPage.php?id=".$row['emp_no']."'><input type='button' name='add' value='Edit' id='edit'></a>"?></td>
-                <td><?php echo "<a href='deletePage.php?id=".$row['emp_no']."'><input type='button' name='delete' value='Delete'></a>"?></td>
-            </tr>
+<div id="firstPage">
+    <form action="main.php" method="post">
+        <!--    Sticky Form-->
+        <p>Search: <input type="text" name="word" value="<?php echo $condition?>"></p>
+        <p><input type="submit" name="Submit" value="Search"><input type="submit" name="Clear" value="Clear"></p>
+    </form>
+    <form action="main.php" method="post">
+        <table>
+            <thead>
+            <th>Employee Number</th>
+            <th>Birth Date</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th>Hire Date</th>
+            <th>Add/Edit</th>
+            <th>Delete</th>
+            </thead>
+            <tbody>
+            <a href='addPage.php'><input type='button' name='add' value='Insert Employee'></a>
+            <?php
+            // Displaying employee info
+            if (!$condition) {
+                //    Local variables
+                //    Result quantity
 
-        <?php endwhile;
-    } else {
-        $total_pages = 1;
-        echo "<p>Nothing to display</p>";
-    }
-        ?>
+                $total_rows = countEmployee()->num_rows;
+                if ($total_rows > 0) {
+                    //      Page quantity
+                    $total_pages = ceil($total_rows/$maxRows);
+                    if ($page < 0) {
+                        $page = 0;
+                    }
+                    if ($page+1 >= $total_pages) {
+                        $page = $total_pages-1;
+                    }
+                    $start = $page*$maxRows;
+                    if ($start > $total_rows) {
+                        $start = $total_rows-1;
+                    }
+                    $result = displayEmployeePage($start, $maxRows);
+                    while($row = $result->fetch_assoc()):
+                        ?>
+                        <tr>
+                            <td><?php echo $row['emp_no'] ?></td>
+                            <td><?php echo $row['birth_date'] ?></td>
+                            <td><?php echo $row['first_name'] ?></td>
+                            <td><?php echo $row['last_name'] ?></td>
+                            <td><?php echo $row['gender'] ?></td>
+                            <td><?php echo $row['hire_date'] ?></td>
+                            <td><?php echo "<a href='editPage.php?id=".$row['emp_no']."'><input type='button' name='add' value='Edit' id='edit'></a>"?></td>
+                            <td><?php echo "<a href='deletePage.php?id=".$row['emp_no']."'><input type='button' name='delete' value='Delete'></a>"?></td>
+                        </tr>
 
-<?php
-//Search my result
-} elseif($condition || isset($_POST['Submit'])) {
-
-    //    Local variables
-    //    Result quantity
-    $total_rows = findEmployee($condition)->num_rows;
-    if ($total_rows>0) {
-        //    Page quantity
-        $total_pages = ceil($total_rows/$maxRows);
-        if ($page < 0) {
-            $page = 0;
-        }
-        if ($page+1 >= $total_pages) {
-            $page = $total_pages-1;
-        }
-        $start = $page*$maxRows;
-        if ($start > $total_rows) {
-            $start = $total_rows-1;
-        }
-        $result = findEmployeeLimit($condition,$start, $maxRows);
-        while($row = $result->fetch_assoc()):
+                    <?php endwhile;
+                } else {
+                    $total_pages = 1;
+                    echo "<p>Nothing to display</p>";
+                }
                 ?>
-                <tr>
-                    <td><?php echo $row['emp_no'] ?></td>
-                    <td><?php echo $row['birth_date'] ?></td>
-                    <td><?php echo $row['first_name'] ?></td>
-                    <td><?php echo $row['last_name'] ?></td>
-                    <td><?php echo $row['gender'] ?></td>
-                    <td><?php echo $row['hire_date'] ?></td>
-                    <td><?php echo "<a href='editPage.php?id=".$row['emp_no']."'><input type='button' name='add' value='Edit' id='edit'></a>"?></td>
-                    <td><?php echo "<a href='deletePage.php?id=".$row['emp_no']."'><input type='button' name='delete' value='Delete'></a>"?></td>
-                </tr>
 
-            <?php endwhile;
-    } else {
-        $total_pages = 1;
-        echo "<p>No results for $condition</p>";
-    }
-}
-?>
-</tbody>
-</table>
-</form>
-<form action="main.php" method="post">
-    <p><?php echo 'Total Results: ', $total_rows ?></p>
-    <p><?php $pageResult = $page; echo 'Page: ', ++$pageResult, ' of ', $total_pages ?></p>
-    <input type="hidden" name="page" value="<?php echo $page; ?>">
-    <input type="submit" name="action" value="Previous" />
-    <input type="submit" name="action" value="Next" />
-    <p></p>
-</form>
-<form action="main.php" method="post">
-    <p><input type="submit" name="logout" value="Logout" /></p>
-</form>
+                <?php
+//Search my result
+            } elseif($condition || isset($_POST['Submit'])) {
+
+                //    Local variables
+                //    Result quantity
+                $total_rows = findEmployee($condition)->num_rows;
+                if ($total_rows>0) {
+                    //    Page quantity
+                    $total_pages = ceil($total_rows/$maxRows);
+                    if ($page < 0) {
+                        $page = 0;
+                    }
+                    if ($page+1 >= $total_pages) {
+                        $page = $total_pages-1;
+                    }
+                    $start = $page*$maxRows;
+                    if ($start > $total_rows) {
+                        $start = $total_rows-1;
+                    }
+                    $result = findEmployeeLimit($condition,$start, $maxRows);
+                    while($row = $result->fetch_assoc()):
+                        ?>
+                        <tr>
+                            <td><?php echo $row['emp_no'] ?></td>
+                            <td><?php echo $row['birth_date'] ?></td>
+                            <td><?php echo $row['first_name'] ?></td>
+                            <td><?php echo $row['last_name'] ?></td>
+                            <td><?php echo $row['gender'] ?></td>
+                            <td><?php echo $row['hire_date'] ?></td>
+                            <td><?php echo "<a href='editPage.php?id=".$row['emp_no']."'><input type='button' name='add' value='Edit' id='edit'></a>"?></td>
+                            <td><?php echo "<a href='deletePage.php?id=".$row['emp_no']."'><input type='button' name='delete' value='Delete'></a>"?></td>
+                        </tr>
+
+                    <?php endwhile;
+                } else {
+                    $total_pages = 1;
+                    echo "<p>No results for $condition</p>";
+                }
+            }
+            ?>
+            </tbody>
+        </table>
+    </form>
+    <form action="main.php" method="post">
+        <p><?php echo 'Total Results: ', $total_rows ?></p>
+        <p><?php $pageResult = $page; echo 'Page: ', ++$pageResult, ' of ', $total_pages ?></p>
+        <input type="hidden" name="page" value="<?php echo $page; ?>">
+        <input type="submit" name="action" value="Previous" />
+        <input type="submit" name="action" value="Next" />
+        <p></p>
+    </form>
+    <form action="main.php" method="post">
+        <p><input type="submit" name="logout" value="Logout" /></p>
+    </form>
+</div>
+
 </body>
 
 </html>
