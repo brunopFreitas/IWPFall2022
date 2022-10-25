@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
 </head>
 <body>
 <div id="loginPage">
     <h1>INET 2005 - Assignment - HR Login</h1>
-    <form name="form1" method="post" id="loginForm" action="checkLogin.php">
+    <form name="form1" method="post" id="loginForm" action="checkLogin.php"  onsubmit="return checkform(this);">
         <table>
             <tbody>
             <tr>
@@ -29,6 +30,22 @@
             </tr>
             </tbody>
         </table>
+        <!-- START CAPTCHA -->
+        <br>
+        <div class="capbox">
+
+            <div id="CaptchaDiv"></div>
+
+            <div class="capbox-inner">
+                Type the number:<br>
+
+                <input type="hidden" id="txtCaptcha">
+                <input type="text" name="CaptchaInput" id="CaptchaInput" size="15"><br>
+
+            </div>
+        </div>
+        <br><br>
+        <!-- END CAPTCHA -->
         <input type="submit" name="submit" id="submit" value="Login" />
         <a href='register.php'><input type='button' name='addNewUser' value='New User'></a>
     </form>
