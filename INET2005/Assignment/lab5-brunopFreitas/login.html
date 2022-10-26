@@ -3,30 +3,52 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
 </head>
 <body>
-<h1>INET 2005 - Assignment - HR Login</h1>
-<form name="form1" method="post" action="checkLogin.php">
-    <table>
-        <tr>
-            <td>
-                <label for="loginUser">User:</label>
-            </td>
-            <td>
-                <input name="loginUser" id="loginUser" type="text" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="loginPwd">Password:</label>
-            </td>
-            <td>
-                <input name="loginPwd" id="loginPwd" type="password" />
-            </td>
-        </tr>
-    </table>
-    <input type="submit" name="submit" id="submit" value="Login" />
-    <a href='register.php'><input type='button' name='addNewUser' value='New User'></a>
-</form>
+<div id="loginPage">
+    <h1>INET 2005 - Assignment - HR Login</h1>
+    <form name="form1" method="post" id="loginForm" action="checkLogin.php"  onsubmit="return checkform(this);">
+        <table>
+            <tbody>
+            <tr>
+                <td>
+                    <label for="loginUser">User:</label>
+                </td>
+                <td>
+                    <input name="loginUser" id="loginUser" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="loginPwd">Password:</label>
+                </td>
+                <td>
+                    <input name="loginPwd" id="loginPwd" type="password" />
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <!-- START CAPTCHA -->
+        <br>
+        <div class="capbox">
+
+            <div id="CaptchaDiv"></div>
+
+            <div class="capbox-inner">
+                Type the number:<br>
+
+                <input type="hidden" id="txtCaptcha">
+                <input type="text" name="CaptchaInput" id="CaptchaInput" size="15"><br>
+
+            </div>
+        </div>
+        <br><br>
+        <!-- END CAPTCHA -->
+        <input type="submit" name="submit" id="submit" value="Login" />
+        <a href='register.php'><input type='button' name='addNewUser' value='New User'></a>
+    </form>
+</div>
 </body>
 </html>

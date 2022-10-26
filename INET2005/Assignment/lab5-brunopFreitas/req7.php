@@ -10,8 +10,8 @@ function deleteEmployee($emp_no) {
 //        "emp_no = ".
 //        $emp_no;
 //    $result = mysqli_query($conn,$myQuerie);
-    $sql = $conn->prepare("DELETE FROM employees.employees WHERE emp_no = ?");
-    $sql->bind_param("i",$emp_no);
+    $sql = $conn->prepare("CALL deleteEmployee(?)");
+    $sql->bind_param('i', $emp_no);
     $sql->execute();
     $result = $sql->affected_rows;
     $sql->close();
