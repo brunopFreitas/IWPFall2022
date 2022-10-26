@@ -1,0 +1,63 @@
+<!--
+AWEBD 3100 - Assignment 4 Starter Code  
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./style-nav.css">
+    <title>Assignment 4 - Myinterest</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <nav class="navbar">
+            <img src="./logo.png" alt="Myinterest logo" class="logo">
+
+            <a href="javascript:void(0);" class="menu">
+                <i class="fa fa-bars"></i>
+            </a>
+
+            <div class="nav-collapse">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Today</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Watch</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Explore</a>
+                    </li>
+                    <li class="nav-item nav-search">
+                        <input type="text" class="text-search">
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <p>Hello. Our UI cards will start here.</p>
+
+    </div>
+
+    <script>
+        const btn = document.querySelector(".menu")
+        const menu = document.querySelector(".nav-collapse")
+
+        btn.addEventListener("click", () => {
+            menu.classList.toggle("nav-show")
+        })
+    </script>
+
+</body>
+
+</html>

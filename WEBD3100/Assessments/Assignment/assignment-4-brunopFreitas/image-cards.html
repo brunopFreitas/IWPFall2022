@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Image Card</title>
+        <link rel="stylesheet" href="reset.css">
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            header{
+                text-align: center;
+                padding: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            ul.flex-list {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+
+            ul.flex-list li {
+                flex: 0 1 300px;
+                margin: 0 1rem;
+                
+            }
+
+            image {
+                max-width: 100%;
+            }
+
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>My Flex Cards</h1>
+        </header>
+
+        <main>
+            <ul class="flex-list">
+                <li>
+                    <img src="img/img-fall.jpg" alt="">
+                    <h2>Card 1</h2>
+                    <p>Some info about card 1</p>
+                    <a href="#">More...</a>
+                </li>
+                <li>
+                    <img src="img/img-summer.jpg" alt="">
+                    <h2>Card 2</h2>
+                    <p>Some info about card 2</p>
+                    <a href="#">More...</a>
+                </li>
+                <li>
+                    <img src="img/img-winter.jpg" alt="">
+                    <h2>Card 3</h2>
+                    <p>Some info about card 3</p>
+                    <a href="#">More...</a>
+                </li>
+            </ul>
+        </main>
+        
+    </body>
+</html>
