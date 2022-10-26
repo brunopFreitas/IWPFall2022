@@ -39,14 +39,20 @@ const PokemonSchema = new Schema({
     enum: ["Bug","Dragon","Electric","Fighting","Fire","Flying","Ghost","Grass","Ground","Ice","Normal","Poison","Psychic","Rock","Water"],
     required: true
   }],
-  next_evolution: [{
+  prev_evolution: [{
     num: {
       type: String,
-      required: true
     },
     name: {
       type: String,
-      required: true
+    }
+  }],
+  next_evolution: [{
+    num: {
+      type: String,
+    },
+    name: {
+      type: String,
     }
   }]
 }, {

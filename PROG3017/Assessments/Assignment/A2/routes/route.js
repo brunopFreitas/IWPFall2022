@@ -11,6 +11,8 @@ const {
     User
 } = require('../models/pokemon')
 
+const validateJWT = require('../middleware/checkMyJWT')
+const headerName = 'X-auth-token'
 
 // POST NEW USER
 router.post("/user/register", async (req, res) => {
@@ -36,7 +38,7 @@ router.post("/user/register", async (req, res) => {
         user.save()
             .then(data => {
                 newJWT = jwt.sign(req.body.email, process.env.JWT)
-                res.header("X-auth-token", newJWT)
+                res.header(headerName, newJWT)
                 res.status(201).json({
                     id: data._id,
                     email: data.email
@@ -77,7 +79,7 @@ router.post("/user/login", async (req, res) => {
             
             if (result) {
                  newJWT = jwt.sign(req.body.email, process.env.JWT)
-                 res.header("X-auth-token", newJWT)
+                 res.header(headerName, newJWT)
                  res.status(200).send()
             } else {
                 res.status(401).json({
@@ -111,27 +113,38 @@ router.get("/", async (req, res) => {
 // POST
 router.post("/", (req, res) => {
 
-    const pokemon = new Pokemon({
-        id: req.body.id,
-        num: req.body.num,
-        name: req.body.name,
-        img: req.body.img,
-        type: req.body.type,
-        height: req.body.height,
-        weight: req.body.weight,
-        weaknesses: req.body.weaknesses,
-        next_evolution: req.body.next_evolution
-    });
+    
 
-    pokemon.save()
-        .then(data => {
-            res.status(201).json(data);
-        })
-        .catch(err => {
-            res.status(422).json({
-                message: err
+    if (validateJWT.checkMyJWT(req.get(headerName))) {
+        const pokemon = new Pokemon({
+            id: req.body.id,
+            num: req.body.num,
+            name: req.body.name,
+            img: req.body.img,
+            type: req.body.type,
+            height: req.body.height,
+            weight: req.body.weight,
+            weaknesses: req.body.weaknesses,
+            next_evolution: req.body.next_evolution
+        });
+    
+        pokemon.save()
+            .then(data => {
+                res.status(201).json(data);
             })
+            .catch(err => {
+                res.status(422).json({
+                    message: err
+                })
+            })
+
+    } else {
+        res.status(401).json({
+            message: "Unauthorized"
         })
+    }
+
+
 })
 
 // GET BY ID
