@@ -4,110 +4,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>FlexCards</title>
         <link rel="stylesheet" href="reset.css">
-        <style>
-            body {
-                font-family: Arial, Helvetica, sans-serif;
-            }
-
-            header{
-                text-align: center;
-                padding: 2rem;
-                margin-bottom: 2rem;
-            }
-
-            header h1 {
-                font-size: 2.5rem;
-            }
-
-            ul.flex-list {
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
-            }
-
-            ul.flex-list li {
-                flex: 0 1 300px;
-                margin: 0 1rem;
-                padding: 1rem;
-                /* border: 1px solid #ccc;
-                border-radius: 10px; */
-
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-start;
-            }
-            
-            ul.flex-list li p {
-                padding-top: 0.5rem;
-            }
-
-            ul.flex-list li h2 {
-                font-size: 1.5rem;
-                padding-top: 0.5rem;
-                margin-bottom: 0;
-
-            }
-
-            li.card {
-                flex: 0 1 300px;
-                margin: 0 1rem;
-                position: relative;
-            }
-
-            li.card p {
-                position: absolute;
-                top: 70%;
-                width: 100%;
-                text-align: center;
-                color: white;
-            }
-
-            li.card a {
-                text-decoration: none;
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                padding-top: 80%;
-                text-align: center;
-                color: white;
-            }
-
-            li.card h2 {
-                position: absolute;
-                top: 10%;
-                text-align: center;  
-                color: white;
-            }
-
-            img {
-                max-width: 100%;
-                border-radius: 10px;
-            }
-
-            .link {
-                position: absolute;
-                top: 50%;
-                right: 50%;
-
-            }
-
-            .container {
-                width: 300px;
-                height: 300px;
-                background-color: #eee;
-                position: relative;
-                
-            }
-
-            li.card :hover {
-                color: red;
-            }
-
-        </style>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <header>
@@ -117,29 +14,30 @@
         <main>
             <ul class="flex-list">
                 <li class="card">
-                    <img src="img/img-fall.jpg" alt="">
+                    <img src="img/skate_board.jpg" alt="">
                     <h2>Card 1</h2>
                     <p>Some info about card 1</p>
                     <a href="#">More...</a>
                 </li>
                 <li class="card">
-                    <img src="img/img-summer.jpg" alt="">
+                    <img src="img/surfing.jpg" alt="">
                     <h2>Card 2</h2>
                     <p>Some info about card 2</p>
                     <a href="#">More...</a>
                 </li>
                 <li class="card">
-                    <img src="img/img-winter.jpg" alt="">
+                    <img src="img/grafitti.jpg" alt="">
+                    <h2>Card 3</h2>
+                    <p>Some info about card 3</p>
+                    <a href="#">More...</a>
+                </li>
+                <li class="card">
+                    <img src="img/surfCar.jpg" alt="">
                     <h2>Card 3</h2>
                     <p>Some info about card 3</p>
                     <a href="#">More...</a>
                 </li>
             </ul>
-        </main>
-
-        <div class="container">
-            <a class="link"  href="#">My link</a>
-        </div>
-        
+        </main>        
     </body>
 </html>
