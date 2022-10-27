@@ -113,8 +113,6 @@ router.get("/", async (req, res) => {
 // POST
 router.post("/", (req, res) => {
 
-    
-
     if (validateJWT.checkMyJWT(req.get(headerName))) {
         const pokemon = new Pokemon({
             id: req.body.id,
