@@ -12,7 +12,7 @@ interface iCustomerDataModel
 
     public function selectCustomers();
 
-    public function filterCustomers($name);
+    public function filterCustomers($first_name,$last_name);
     
     public function selectCustomerById($custID);
 

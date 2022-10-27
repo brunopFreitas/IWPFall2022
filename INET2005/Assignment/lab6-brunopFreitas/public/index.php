@@ -18,7 +18,9 @@ elseif (isset($_GET['idDelete'])){
     $custController->deleteAction($_GET['idDelete']);
 }
 elseif (isset($_POST['name'])){
-    $custController->filterCustomer($_POST['name']);
+    $first_name = '%'.$_POST['name'].'%';
+    $last_name = '%'.$_POST['name'].'%';
+    $custController->filterCustomer($first_name, $last_name);
 }
 elseif (isset($_POST['UpdateBtn']))
 {

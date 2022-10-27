@@ -87,7 +87,7 @@ class CustomerModel
         return $arrayOfCustomerObjects;
     }
 
-    public function getFilterCustomers($name)
+    public function getFilterCustomers($first_name, $last_name)
     {
         //this will be executed based on which method we have enabled
         //PDO with MySQL -or- MYSQLI with MySQL in the constructor
@@ -101,7 +101,7 @@ class CustomerModel
         $arrayOfCustomerObjects = array();
 
         //attempt a select query within the model to get all the customers
-        $this->m_DataAccess->filterCustomers($name);
+        $this->m_DataAccess->filterCustomers($first_name, $last_name);
         //loop to get each customer row that is now available from the query
         //it's possible that no rows were returned if there are no customer records
         while($customerRow = $this->m_DataAccess->fetchCustomer())

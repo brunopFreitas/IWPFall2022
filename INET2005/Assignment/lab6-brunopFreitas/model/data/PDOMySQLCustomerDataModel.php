@@ -241,7 +241,7 @@ class PDOMySQLCustomerDataModel implements iCustomerDataModel
         return $row['address2'];
     }
 
-    public function filterCustomers($name)
+    public function filterCustomers($first_name, $last_name)
     {
         // hard-coding for first ten rows
         $start = 0;
@@ -251,7 +251,7 @@ class PDOMySQLCustomerDataModel implements iCustomerDataModel
         //notice the placeholders for the start and count
         $selectStatement = "SELECT * FROM customer";
         $selectStatement .= " LEFT JOIN address ON customer.address_id = address.address_id";
-        $selectStatement .= " WHERE first_name like '%:first_name%' OR last_name like '%:last_name%'";
+        $selectStatement .= " WHERE first_name like :first_name OR last_name like :last_name";
         $selectStatement .= " LIMIT :start,:count;";
 
         try
@@ -261,8 +261,8 @@ class PDOMySQLCustomerDataModel implements iCustomerDataModel
             $this->stmt = $this->dbConnection->prepare($selectStatement );
             $this->stmt->bindParam(':start', $start, PDO::PARAM_INT);
             $this->stmt->bindParam(':count', $count, PDO::PARAM_INT);
-            $this->stmt->bindParam(':first_name', $name, PDO::PARAM_STR);
-            $this->stmt->bindParam(':last_name', $name, PDO::PARAM_STR);
+            $this->stmt->bindParam(':first_name', $first_name, PDO::PARAM_STR);
+            $this->stmt->bindParam(':last_name', $last_name, PDO::PARAM_STR);
             //execute the select statement and store it in the $stmt
             //member variable
             $this->stmt->execute();

@@ -32,9 +32,14 @@ and open the template in the editor.
                 Create Customer
             </a>
         </button><br><br>
+        <button>
+            <a href="<?php echo $_SERVER['PHP_SELF']; ?>">
+                Clear
+            </a>
+        </button><br><br>
         <form method="post" onsubmit="../public/index.php">
             <label for="name">Type a name to search:</label>
-            <input type="text" id="name" name="name"><input id="filter" type="submit" value="Search">
+            <input type="text" id="name" name="name" value=<?php if(isset($_POST['name'])) { echo $_POST['name'];} ?> ><input id="filter" type="submit" value="Search">
         </form>
         <table>
             <thead>
