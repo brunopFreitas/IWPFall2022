@@ -76,11 +76,11 @@ router.post("/user/login", async (req, res) => {
         // encrypting
         bcrypt.compare(user.password, checkUser.password, function (err, result) {
 
-            
+
             if (result) {
-                 newJWT = jwt.sign(req.body.email, process.env.JWT)
-                 res.header(headerName, newJWT)
-                 res.status(200).send()
+                newJWT = jwt.sign(req.body.email, process.env.JWT)
+                res.header(headerName, newJWT)
+                res.status(200).send()
             } else {
                 res.status(401).json({
                     message: "Invalid Username or Password"
@@ -125,7 +125,7 @@ router.post("/", (req, res) => {
             weaknesses: req.body.weaknesses,
             next_evolution: req.body.next_evolution
         });
-    
+
         pokemon.save()
             .then(data => {
                 res.status(201).json(data);
@@ -165,52 +165,69 @@ router.get("/:Id", async (req, res) => {
 // DELETE
 
 router.delete("/:Id", async (req, res) => {
-    try {
-        const deletedPokemon = await Pokemon.deleteOne({
-            _id: req.params.Id
-        });
-        if (deletedPokemon.deletedCount === 0) {
-            res.status(404).send("Not Found")
-        } else {
-            res.status(204).json(deletedPokemon);
+    if (validateJWT.checkMyJWT(req.get(headerName))) {
+        try {
+            const deletedPokemon = await Pokemon.deleteOne({
+                _id: req.params.Id
+            });
+            if (deletedPokemon.deletedCount === 0) {
+                res.status(404).send("Not Found")
+            } else {
+                res.status(204).json(deletedPokemon);
+            }
+        } catch (err) {
+            res.json({
+                message: err
+            })
         }
-    } catch (err) {
-        res.json({
-            message: err
-        });
-    }
-});
 
+
+    } else {
+        res.status(401).json({
+            message: "Unauthorized"
+        })
+    }
+})
 
 // PUT
 
 router.put("/:Id", async (req, res) => {
-    try {
-        const updatedPokemon = await Pokemon.updateOne({
-            _id: req.params.Id
-        }, {
-            $set: {
-                id: req.body.id,
-                num: req.body.num,
-                name: req.body.name,
-                img: req.body.img,
-                type: req.body.type,
-                height: req.body.height,
-                weight: req.body.weight,
-                weaknesses: req.body.weaknesses,
-                next_evolution: req.body.next_evolution
+
+    if (validateJWT.checkMyJWT(req.get(headerName))) {
+        try {
+            const updatedPokemon = await Pokemon.updateOne({
+                _id: req.params.Id
+            }, {
+                $set: {
+                    id: req.body.id,
+                    num: req.body.num,
+                    name: req.body.name,
+                    img: req.body.img,
+                    type: req.body.type,
+                    height: req.body.height,
+                    weight: req.body.weight,
+                    weaknesses: req.body.weaknesses,
+                    next_evolution: req.body.next_evolution
+                }
+            })
+            if (updatedPokemon.matchedCount === 0) {
+                res.status(404).send("Not Found");
+            } else {
+                res.status(204).json(updatedPokemon)
             }
-        })
-        if (updatedPokemon.matchedCount === 0) {
-            res.status(404).send("Not Found");
-        } else {
-            res.status(204).json(updatedPokemon)
+        } catch (err) {
+            res.status(422).json({
+                message: err
+            });
         }
-    } catch (err) {
-        res.status(422).json({
-            message: err
-        });
+
+    } else {
+        res.status(401).json({
+            message: "Unauthorized"
+        })
     }
+
+
 })
 
 module.exports = router
