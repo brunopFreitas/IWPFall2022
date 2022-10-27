@@ -8,7 +8,7 @@ if(isset($_GET['idUpdate']))
 {
     $custController->updateAction($_GET['idUpdate']);
 }
-elseif ($_GET['create']){
+elseif (isset($_GET['create'])){
     $custController->insertAction();
 }
 elseif (isset($_POST['InsertBtn'])){

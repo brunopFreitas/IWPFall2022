@@ -11,6 +11,7 @@ require_once '../model/Address.php';
 
 //require_once '../model/data/MySQLiCustomerDataModel.php';
 require_once '../model/data/PDOMySQLCustomerDataModel.php';
+//require_once '../model/data/PDOSQliteCustomerDataModel.php';
 
 
 
@@ -27,6 +28,7 @@ class CustomerModel
 
         //$this->m_DataAccess = new MySQLiCustomerDataModel();
         $this->m_DataAccess = new PDOMySQLCustomerDataModel();
+//        $this->m_DataAccess = new PDOSQliteCustomerDataModel();
 
     }
     
