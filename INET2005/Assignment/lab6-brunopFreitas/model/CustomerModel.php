@@ -87,6 +87,57 @@ class CustomerModel
         return $arrayOfCustomerObjects;
     }
 
+    public function getFilterCustomers($name)
+    {
+        //this will be executed based on which method we have enabled
+        //PDO with MySQL -or- MYSQLI with MySQL in the constructor
+        $this->m_DataAccess->connectToDB();
+
+        //because in this function we get all the customers,
+        //we create an empty array which will eventually hold all
+        //of the customer objects that will be returned by our model.
+        //initially, it will be empty..we will fill it with customer
+        //objects with ensuing code
+        $arrayOfCustomerObjects = array();
+
+        //attempt a select query within the model to get all the customers
+        $this->m_DataAccess->filterCustomers($name);
+        //loop to get each customer row that is now available from the query
+        //it's possible that no rows were returned if there are no customer records
+        while($customerRow = $this->m_DataAccess->fetchCustomer())
+        {
+            //for each row of customer of data that we get back,
+            //we will
+
+            //create a new address object and fill with address data from
+            //the current db record
+            $address = new Address(
+                $this->m_DataAccess->fetchAddressID($customerRow),
+                $this->m_DataAccess->fetchAddress1($customerRow),
+                $this->m_DataAccess->fetchAddress2($customerRow)
+            );
+            //create a new customer object and fill with customer data
+            //from the current db record and include the address object
+            //just created before
+            $currentCustomer = new Customer($this->m_DataAccess->fetchCustomerID($customerRow),
+                $this->m_DataAccess->fetchCustomerFirstName($customerRow),
+                $this->m_DataAccess->fetchCustomerLastName($customerRow),
+                $address);
+
+            //append the newly created customer object to the array
+            //of customer objects to fill up the array one by one
+            $arrayOfCustomerObjects[] = $currentCustomer;
+        }
+
+        $this->m_DataAccess->closeDB();
+
+        //array has been filled up with all the available customer objects
+        //return back the array of objects to the calling function
+        //in the controller
+        return $arrayOfCustomerObjects;
+
+    }
+
     //retrieves a specific customer record from the database and
     //creates a customer object with the data that is then returned to the caller
     public function getCustomer($custID)

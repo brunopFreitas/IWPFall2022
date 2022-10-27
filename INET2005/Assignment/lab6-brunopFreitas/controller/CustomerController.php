@@ -22,6 +22,17 @@ class CustomerController
         include '../view/displayCustomers.php';
     }
 
+    public function filterCustomer($name)
+    {
+        //retrieve an array of all the customers in the db
+        //as customer objects
+        $arrayOfCustomers = $this->model->getFilterCustomers($name);
+
+        //include the view that will iterate over the array
+        //and display the customers in a table
+        include '../view/displayCustomers.php';
+    }
+
     public function insertAction()
     {
 

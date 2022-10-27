@@ -31,7 +31,11 @@ and open the template in the editor.
             <a href="<?php echo $_SERVER['PHP_SELF']; ?>?create=true>">
                 Create Customer
             </a>
-        </button>
+        </button><br><br>
+        <form method="post" onsubmit="../public/index.php">
+            <label for="name">Type a name to search:</label>
+            <input type="text" id="name" name="name"><input id="filter" type="submit" value="Search">
+        </form>
         <table>
             <thead>
                 <tr>

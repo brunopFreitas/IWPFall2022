@@ -17,6 +17,9 @@ elseif (isset($_POST['InsertBtn'])){
 elseif (isset($_GET['idDelete'])){
     $custController->deleteAction($_GET['idDelete']);
 }
+elseif (isset($_POST['name'])){
+    $custController->filterCustomer($_POST['name']);
+}
 elseif (isset($_POST['UpdateBtn']))
 {
     $custController->commitUpdateAction($_POST['editCustId'],$_POST['firstName'],$_POST['lastName']);

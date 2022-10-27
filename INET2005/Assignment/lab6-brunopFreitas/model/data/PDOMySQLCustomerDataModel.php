@@ -240,6 +240,39 @@ class PDOMySQLCustomerDataModel implements iCustomerDataModel
         //column with the current row of customer data you are focused on
         return $row['address2'];
     }
+
+    public function filterCustomers($name)
+    {
+        // hard-coding for first ten rows
+        $start = 0;
+        $count = 10;
+
+        //build the SQL STATEMENT
+        //notice the placeholders for the start and count
+        $selectStatement = "SELECT * FROM customer";
+        $selectStatement .= " LEFT JOIN address ON customer.address_id = address.address_id";
+        $selectStatement .= " WHERE first_name like '%:first_name%' OR last_name like '%:last_name%'";
+        $selectStatement .= " LIMIT :start,:count;";
+
+        try
+        {
+            //prepare the select statement by inserting the two values
+            //into the parameters/placeholders
+            $this->stmt = $this->dbConnection->prepare($selectStatement );
+            $this->stmt->bindParam(':start', $start, PDO::PARAM_INT);
+            $this->stmt->bindParam(':count', $count, PDO::PARAM_INT);
+            $this->stmt->bindParam(':first_name', $name, PDO::PARAM_STR);
+            $this->stmt->bindParam(':last_name', $name, PDO::PARAM_STR);
+            //execute the select statement and store it in the $stmt
+            //member variable
+            $this->stmt->execute();
+        }
+        catch(PDOException $ex)
+        {
+            die('Could not select records from Sakila Database via PDO: ' . $ex->getMessage());
+        }
+
+    }
 }
 
 ?>

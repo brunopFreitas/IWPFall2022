@@ -11,6 +11,8 @@ interface iCustomerDataModel
     public function closeDB();
 
     public function selectCustomers();
+
+    public function filterCustomers($name);
     
     public function selectCustomerById($custID);
 
