@@ -1,95 +1,79 @@
-body {
-    font-family: Arial, Helvetica, sans-serif;
-}
+@media screen and (min-width: 600px) { 
 
-header{
-    text-align: center;
-    padding: 2rem;
-    margin-bottom: 2rem;
-}
+    body {
+        background-image: url(./img/background.png);
+        background-repeat: repeat;
+        background-size: cover;
+    }
 
-header h1 {
-    font-size: 2.5rem;
-}
 
-ul.flex-list {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
+    .card-container {
+            margin: 40px 0;
+            padding: 0 2rem;
 
-ul.flex-list li {
-    flex: 0 1 300px;
-    margin: 0 1rem;
-    padding: 1rem;
-    /* border: 1px solid #ccc;
-    border-radius: 10px; */
+        }
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-}
+        ul.flex-list {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul.flex-list li {
+            flex: 0 1 300px;        
+            list-style-type: none;
+            align-self: stretch;
+            margin: 0;
+            padding: 0;
+        }
 
-ul.flex-list li p {
-    padding-top: 0.5rem;
-}
+        li.card {
+            align-self: flex-start;
+            text-align: center;
+        }
 
-ul.flex-list li h2 {
-    font-size: 1.5rem;
-    padding-top: 0.5rem;
-    margin-bottom: 0;
+        li.card img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        
+ }
 
-}
+@media screen and (max-width: 599px) { 
 
-li.card {
-    flex: 0 1 300px;
-    margin: 0 1rem;
-    position: relative;
-    width: 150px;
-    height: 150px;
-}
+    .card-container {
+        margin: 20px 0;
+        padding: 0 2rem;
 
-li.card p {
-    position: absolute;
-    top: 70%;
-    width: 100%;
-    text-align: center;
-    color: white;
-}
+    }
 
-li.card a {
-    text-decoration: none;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding-top: 80%;
-    text-align: center;
-    color: white;
-}
+    ul.flex-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin: 0;
+        padding: 0;
+    }
+    
+    ul.flex-list li {
+        flex: 0 1 300px;        
+        list-style-type: none;
+        align-self: stretch;
+        margin-bottom: 20px;
+        padding: 0;
+    }
 
-li.card h2 {
-    position: absolute;
-    top: 10%;
-    text-align: center;  
-    color: white;
-}
+    li.card {
+        align-self: flex-start;
+        text-align: center;
+    }
 
-img {
-    max-width: 100%;
-    border-radius: 10px;
-}
-
-.link {
-    position: absolute;
-    top: 50%;
-    right: 50%;
+    li.card img {
+        max-width: 100%;
+        border-radius: 10px;
+    }
 
 }
 
-li.card :hover {
-    color: red;
-}

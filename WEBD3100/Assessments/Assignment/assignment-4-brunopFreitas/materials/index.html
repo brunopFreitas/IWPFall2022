@@ -8,17 +8,17 @@ AWEBD 3100 - Assignment 4 Starter Code
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style-nav.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./style-nav.css">
     <title>Assignment 4 - Myinterest</title>
 </head>
 
 <body>
 
     <div class="container">
+
         <nav class="navbar">
-            <img src="./img/logo.png" alt="Myinterest logo" class="logo">
+            <img src="./logo.png" alt="Myinterest logo" class="logo">
 
             <a href="javascript:void(0);" class="menu">
                 <i class="fa fa-bars"></i>
@@ -36,28 +36,16 @@ AWEBD 3100 - Assignment 4 Starter Code
                         <a href="#" class="nav-link">Explore</a>
                     </li>
                     <li class="nav-item nav-search">
-                        <input type="text" id="search" class="text-search" placeholder="Search">
+                        <input type="text" class="text-search">
                     </li>
-                    <input type="button" id="login" value="Login">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Login</a>
+                    </li>
                 </ul>
             </div>
         </nav>
-        <main class="card-container">
-            <ul class="flex-list">
-                <li class="card">
-                    <img src="/img/surf_34r.png" alt="">
-                </li>
-                <li class="card">
-                    <img src="img/skatesunset_34r.png" alt="">
-                </li>
-                <li class="card">
-                    <img src="img/grafitti_34r.png" alt="">
-                </li>
-                <li class="card">
-                    <img src="img/skateboard_34r.png" alt="">
-                </li>
-            </ul>
-        </main>
+
+        <p>Hello. Our UI cards will start here.</p>
 
     </div>
 
@@ -68,7 +56,6 @@ AWEBD 3100 - Assignment 4 Starter Code
         btn.addEventListener("click", () => {
             menu.classList.toggle("nav-show")
         })
-        
     </script>
 
 </body>
