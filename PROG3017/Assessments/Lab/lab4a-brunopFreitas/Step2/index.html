@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Lab 4A - Step 2</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"
+        integrity="sha256-L/S5mZS8SPJVWoKym3Zwgf2f3/s3X3MaZ7QBA9HdnN8=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        //...your React Code will go here.
+        let people = [
+            "Michelangelo",
+            "Raphael",
+            "Donatello",
+            "Leonardo",
+            "Splinter"
+        ];
+        function changeCase(element) {
+            element.target.innerHTML = element.target.innerHTML.toUpperCase()
+        }
+
+        let peopleElement = people.map((person, i)=>
+            <li key={"id_"+i} onClick={changeCase}>{person}</li>
+        );
+        ReactDOM.render(<ul>{peopleElement}</ul>, document.getElementById('root'));
+
+    </script>
+</body>
+
+</html>
