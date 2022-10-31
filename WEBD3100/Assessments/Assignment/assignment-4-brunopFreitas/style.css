@@ -1,9 +1,7 @@
 @media screen and (min-width: 600px) { 
 
     body {
-        background-image: url(./img/background.png);
-        background-repeat: repeat;
-        background-size: cover;
+        background-color: #181818;
     }
 
 
@@ -42,6 +40,10 @@
  }
 
 @media screen and (max-width: 599px) { 
+
+    body {
+        background-color: #181818;
+    }
 
     .card-container {
         margin: 20px 0;
