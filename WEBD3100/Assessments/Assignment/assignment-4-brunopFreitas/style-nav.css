@@ -95,14 +95,22 @@ a.menu {
         align-items: flex-start;
     }
 
-    .nav-show ul li, .nav-show ul input {
+    .nav-show ul li,
+    #login {
         margin-top: 5px;
     }
 
-     .nav-show a {
+    .nav-show a {
         color: white;
         text-decoration: none;
         font-size: 20px;
+    }
+
+    #search {
+        width: 22rem;
+        height: 1.5rem;
+        border-radius: 10px;
+
     }
 
 }
