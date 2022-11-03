@@ -1,0 +1,35 @@
+html, body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+body {
+    background-color: #dce4eb;
+}
+
+.card {
+    width: 300px;
+    
+}
+
+.card img {
+    max-width: 100%;
+    border-radius: 25px;
+    border: 1px solid black;
+}
+
+img:hover {
+    filter: brightness(80%);
+    filter: drop-shadow(0 0 0.75rem black);
+    cursor: pointer;
+    animation-name: changeSize;
+    transition: filter 2s;
+    animation-duration: 4s;
+}
+
+@keyframes changeSize {
+   0% {transform: scale(1);}
+   100% {transform: scale(2);}
+}
