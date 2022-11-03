@@ -1,0 +1,22 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: black;
+    color: white;
+    -webkit-app-region: drag;
+}
+
+.container {
+    position: relative;
+}
+
+.close {
+    margin-top: 5px;
+    font-size: 15px;
+    font-weight: 600;
+    position: absolute;
+    bottom: 0;
+  }
+
+  .close:hover {
+    cursor: pointer;
+  }
