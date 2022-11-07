@@ -5,31 +5,6 @@ const extAccepted = {
     imgExt: ['.jpg', '.png']
 }
 
-// let albumObject = window.electronAPI.onSendToFront()
-// let tbody = document.createElement('tbody')
-
-//     albumObject.forEach((songObject) => {
-//         extAccepted.songExt.forEach((ext) => {
-//             if (songObject.ext === ext) {
-//                 let row = document.createElement('tr')
-//                 let cell = document.createElement('td')
-//                 cell.innerHTML = songObject.name
-//                 cell.setAttribute('url', songObject.url)
-//                 cell.setAttribute("id", "track")
-//                 row.appendChild(cell)
-//                 tbody.appendChild(row)
-//                 musicTable.appendChild(tbody)
-//             } else {
-//                 extAccepted.imgExt.forEach((ext) => {
-//                     if (songObject.ext === ext) {
-//                         const coverArt = document.getElementById('cover')
-//                         coverArt.src = songObject.url
-//                     }
-//                 })
-//             }
-//         })
-//     })
-
 window.electronAPI.onSendToFront((_event, albumObject) => {
     let tbody = document.createElement('tbody')
 
@@ -37,11 +12,38 @@ window.electronAPI.onSendToFront((_event, albumObject) => {
         extAccepted.songExt.forEach((ext) => {
             if (songObject.ext === ext) {
                 let row = document.createElement('tr')
-                let cell = document.createElement('td')
-                cell.innerHTML = songObject.name
-                cell.setAttribute('url', songObject.url)
-                cell.setAttribute("id", "track")
-                row.appendChild(cell)
+                row.setAttribute('url', songObject.url)
+                row.setAttribute("id", "track")
+
+                let cellTrack = document.createElement('td')
+                cellTrack.innerHTML = songObject.trackNo
+                row.appendChild(cellTrack)
+
+                let cellSongTitle = document.createElement('td')
+                cellSongTitle.innerHTML = songObject.title
+                cellSongTitle.setAttribute("class", "title")
+                row.appendChild(cellSongTitle)
+
+                let cellAlbumName = document.createElement('td')
+                cellAlbumName.innerHTML = songObject.album
+                cellAlbumName.setAttribute("class", "album")
+                row.appendChild(cellAlbumName)
+
+                let cellArtistName = document.createElement('td')
+                cellArtistName.innerHTML = songObject.artist
+                cellArtistName.setAttribute("class", "artist")
+                row.appendChild(cellArtistName)
+
+                let cellDuration = document.createElement('td')
+                const minutes = Math.floor(songObject.duration / 60)
+                const seconds = songObject.duration % 60
+                function padTo2Digits(num) {
+                    return num.toString().padStart(2, '0');
+                }
+                const result = `${padTo2Digits(minutes)}:${padTo2Digits(seconds)}`;
+                cellDuration.innerHTML = result
+                row.appendChild(cellDuration)
+
                 tbody.appendChild(row)
                 musicTable.appendChild(tbody)
             } else {
@@ -59,7 +61,12 @@ window.electronAPI.onSendToFront((_event, albumObject) => {
 $(document).on('click', '#track', function () {
     let url = $(this).attr('url')
     const audio = document.getElementById('audio')
-    const songName = document.getElementById('songName')
+    const songInfo = document.getElementById('songInfo')
     audio.src = url
-    songName.innerHTML = $(this).text()
+    songInfo.innerHTML = 
+        $(this).children('.artist').text() +
+        " - " +
+        $(this).children('.album').text() +
+        " - " +
+        $(this).children('.title').text()
 })

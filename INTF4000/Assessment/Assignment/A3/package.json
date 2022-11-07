@@ -4,7 +4,7 @@
   "description": "EQSV1",
   "main": "main.js",
   "scripts": {
-    "start": "nodemon --watch . --exec electron ."
+    "start": "electron ."
   },
   "author": "bf",
   "license": "ISC",
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "jsmediatags": "^3.9.7",
-    "music-metadata": "^8.1.0",
+    "music-metadata": "^7.13.0",
     "nodemon": "^2.0.20"
   }
 }
