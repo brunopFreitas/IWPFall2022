@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Lab4C-4</title>
+</head>
+<body>
+    <script>
+        //Consider the following code...
+
+        function Employee() {
+            this.salary = 50000;
+            setInterval(function increaseSalary() {    
+                this.salary+=5000;
+                console.log(this.salary);
+            }, 1000);
+        }
+
+        const joe = new Employee()
+
+        //Modify the definition of the increaseSalary function without modifying its implementation
+        //such that the console logs out multiples of 5000 beginning at 50000
+    </script>
+</body>
+</html>

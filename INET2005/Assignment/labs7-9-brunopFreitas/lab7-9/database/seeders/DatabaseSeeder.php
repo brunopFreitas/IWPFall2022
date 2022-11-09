@@ -22,7 +22,9 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call([
            CountrySeeder::class,
-           PersonSeeder::class
+           PersonSeeder::class,
+            LanguageSeeder::class,
+            LanguagePersonSeeder::class
         ]);
     }
 }

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Lab4C-10</title>
+</head>
+<body>
+    <script>
+        //Copy your updated Driver class which you coded in the previous step
+        //and paste below this line and before the Vehicle class...
+
+
+
+
+        class Vehicle {
+            constructor(description, wheels) {
+                this.description = description
+                this.wheels = wheels
+            }
+
+            describeYourself() {
+                return `I am a ${this.description} with ${this.wheels} wheels`;
+            }
+        }
+
+        //In the vehicle class, add a third constructor parameter called driver which should hold an instance
+        //of the Driver class which you pasted above.
+
+        //Create an instance of the Vehicle class called semiTruck. Pass in the values 'semi-truck' for the
+        //vehicle description, 18 for the number of wheels, and an new instance of the Driver class for the 
+        //vehicle's driver parameter.
+
+        //Modify the vehicle's 'describeYourself' method such that when it is invoked the resulting message
+        //returns something similar to the following...
+
+            //'I am a semi-truck with 18 wheels. My driver's name is John Doe. John has 2 years of experience 
+            //and has driven a total of 5243 kilometres'
+
+    </script>
+</body>
+</html>

@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Country extends Model
+class Language extends Model
 {
     use HasFactory;
 
-    function people() {
-        return $this->hasMany(Person::class);
+    function people(){
+        return $this->belongsToMany(Person::class);
     }
 }
