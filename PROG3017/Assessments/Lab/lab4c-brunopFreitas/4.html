@@ -9,7 +9,7 @@
 
         function Employee() {
             this.salary = 50000;
-            setInterval(function increaseSalary() {    
+            setInterval(() =>  {    
                 this.salary+=5000;
                 console.log(this.salary);
             }, 1000);

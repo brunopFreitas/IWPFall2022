@@ -27,7 +27,8 @@
         // {"name":"John Doe","hairColor":"Brown","gender":"Male","country":"Canada","language":"English"}
 
         //Reference: https://blog.bitsrc.io/6-tricks-with-resting-and-spreading-javascript-objects-68d585bdc83
-
+        const { age, ...personNoAge } = person
+        console.log({...personNoAge, ...data})
 
     </script>
 </body>

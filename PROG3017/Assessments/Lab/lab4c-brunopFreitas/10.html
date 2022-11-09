@@ -7,20 +7,57 @@
     <script>
         //Copy your updated Driver class which you coded in the previous step
         //and paste below this line and before the Vehicle class...
+        class Driver {
+            constructor(firstName, lastName, driverLevel, yearsOfExperience) {
+                this.firstName = firstName
+                this.lastName = lastName
+                this.driverLevel = driverLevel
+                this.yearsOfExperience = yearsOfExperience
+                this.tripsInKilometres = []
+            }
 
+            sayHello() {
+                console.log(
+                    `Hello, may name is ${this.firstName} ${this.lastName}. My driver level is ${this.driverLevel} and I have ${this.yearsOfExperience} year(s) of experience.`
+                    )
+            }
+
+            addTrip(distance) {
+                this.tripsInKilometres.push(distance)
+            }
+
+            tripTotal() {
+                const tripTotal = this.tripsInKilometres.reduce(
+                    (previousValue, currentValue) => previousValue + currentValue
+                )
+                return tripTotal
+            }
+
+            getDriverAndTotalTrip() {
+                const tripTotal = this.tripTotal()
+               return `My driver's name is ${this.firstName} ${this.lastName}. ${this.firstName} has ${this.yearsOfExperience} year(s) of experience and has driven a total of ${tripTotal} kilometres`
+            }
+
+        }
 
 
 
         class Vehicle {
-            constructor(description, wheels) {
+            constructor(description, wheels, firstName, lastName, driverLevel, yearsOfExperience) {
                 this.description = description
                 this.wheels = wheels
+                this.driver = new Driver(firstName, lastName, driverLevel, yearsOfExperience)
             }
 
             describeYourself() {
-                return `I am a ${this.description} with ${this.wheels} wheels`;
+                return `I am a ${this.description} with ${this.wheels} wheels. ${this.driver.getDriverAndTotalTrip()}.`
             }
         }
+
+        const semiTruck = new Vehicle('semi-truck', 18, 'Bruno', 'Freitas', 3, 19)
+        semiTruck.driver.addTrip(5000)
+        semiTruck.driver.addTrip(243)
+        console.log(semiTruck.describeYourself())
 
         //In the vehicle class, add a third constructor parameter called driver which should hold an instance
         //of the Driver class which you pasted above.

@@ -19,7 +19,22 @@
 
         //Create an instance of your Driver class and output sayHello to the console.
 
-        
+        class Driver {
+            constructor(firstName, lastName, driverLevel, yearsOfExperience) {
+                this.firstName = firstName
+                this.lastName = lastName
+                this.driverLevel = driverLevel
+                this.yearsOfExperience = yearsOfExperience
+                this.tripsInKilometres = []
+            }
+
+            sayHello() {
+                console.log(`Hello, may name is ${this.firstName} ${this.lastName}. My driver level is ${this.driverLevel} and I have ${this.yearsOfExperience} year(s) of experience.`)
+            }
+        }
+
+        const bruno = new Driver('Bruno', 'Freitas', 3, 19)
+        bruno.sayHello()       
 
     </script>
 </body>
