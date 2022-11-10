@@ -1,0 +1,172 @@
+html,
+body {
+    height: 100%;
+    background-color: #A3C7D6;
+}
+
+.flex-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.main {
+    flex: 1 0 auto;
+    /* take up all space to make a sticky footer */
+}
+
+img {
+    max-width: 100%;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+}
+
+/* Header section */
+.header-outer {
+    padding: 3rem 0;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Header menu */
+
+.nav-list {
+    display: flex;
+}
+
+.nav-list li {
+    padding-left: 4.25rem;
+}
+
+#logo {
+    font-weight: bolder;
+    font-size: 20px;
+    transform: rotate(-10deg);
+    text-decoration: none;
+    color: black;
+}
+
+.nav-list a {
+    font-family: 'Merriweather';
+    font-weight: bold;
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+/* Layout and styles for main section */
+
+.row {
+    display: flex;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+}
+
+.flex-align-center {
+    align-items: center;
+}
+
+.footer {
+    font-family: ' Abril Fatface', serif;
+    padding-bottom: 0.5rem;
+    text-align: center;
+}
+
+/* Hero content */
+.hero h1 {
+    font-family: ' Abril Fatface', serif;
+    font-size: 1.5rem;
+    padding-bottom: 2rem;
+}
+
+.hero h2 {
+    font-family: ' Abril Fatface', serif;
+    font-weight: bold;
+    font-size: 3.75rem;
+    padding-bottom: 2rem;
+}
+
+.hero p {
+    font-family: ' Abril Fatface', serif;
+    font-size: 1.5rem;
+    text-justify: auto;
+}
+
+.hero-img {
+    max-width: 450px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+/* Animations */
+
+.animate {
+    animation-duration: 0.5s;
+    animation-name: animate-fade;
+    animation-fill-mode: backwards;
+  }
+  
+  @keyframes animate-fade {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+.animate.slide {
+    animation-name: animate-slide;
+    animation-duration: 3s;
+}
+
+@keyframes animate-slide {
+    0% {
+        opacity: 0;
+        transform: translate(0, 30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+.delay-1 {
+    animation-delay: 0.6s;
+}
+
+.delay-2 {
+    animation-delay: 1s;
+}
+
+.delay-3 {
+    animation-delay: 1.4s;
+}
+
+.delay-4 {
+    animation-delay: 1.8s;
+}
+
+.delay-5 {
+    animation-delay: 2.2s;
+}
+
+.delay-6 {
+    animation-delay: 2.6s;
+}
