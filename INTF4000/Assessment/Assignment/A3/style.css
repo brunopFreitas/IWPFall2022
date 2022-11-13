@@ -40,3 +40,7 @@ body h2 {
     font-family: 'Kanit';
     font-size: 20px;
 }
+
+.thumb {
+    width: 70px;
+}

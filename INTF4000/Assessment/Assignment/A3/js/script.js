@@ -57,7 +57,7 @@ window.electronAPI.onSendToFront((_event, albumObject) => {
         
         // Thumbnail before album name
         let thumbCover = document.createElement('img')
-        thumbCover.setAttribute("class", "img-thumbnail")
+        thumbCover.setAttribute("class", "img-thumbnail img-fluid thumb")
         thumbCover.src = coverObject[0].url
         cellAlbumName.appendChild(thumbCover)
 
