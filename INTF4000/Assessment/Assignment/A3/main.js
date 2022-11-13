@@ -47,6 +47,8 @@ function getMyMusic() {
   const fs = require('fs')
   const url = require('url')
 
+
+  // Workaround issue with music-metadata and jpeg extensions
   const isMusicFile = (objectExt) => {
     const types = ['.mp3', '.wav']
 
@@ -57,8 +59,6 @@ function getMyMusic() {
     }
   }
 
-
-  // Path to mp3 files
   // Path to the song folder 
   const directoryPath = "/home/bruno/Documents/NSCC/Fall2022/INFT4000/Albuns/The Smiths/Hatful Of Hollow"
 
@@ -84,7 +84,7 @@ function getMyMusic() {
   })
 
   //listing all files using forEach
-  album.forEach(function (albumElement) {
+  album.forEach((albumElement) => {
     let songObject = {}
     songObject["url"] = url.pathToFileURL(path.resolve(directoryPath, albumElement)).href
     songObject["path"] = path.resolve(directoryPath, albumElement)
