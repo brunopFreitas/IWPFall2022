@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Languages') }}</div>
+                <div class="card-header">{{ __('People') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,23 +14,35 @@
                         </div>
                     @endif
 
-                        <a class="btn btn-primary" href="{{ route('languages.create') }}"> Add Language </a>
+                        <a class="btn btn-primary" href="{{ route('people.create') }}"> Add a person </a>
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th scope="col">Name</th>
+                                    <th scope="col">First Name</th>
+                                    <th scope="col">Last Name</th>
+                                    <th scope="col">Country</th>
+                                    <th scope="col">Languages</th>
                                     <th scope="col" colspan="2">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($languages as $language)
+                                @foreach($people as $person)
                                 <tr>
-                                    <td style="width: 100%">{{$language->name}}</td>
+                                    <td>{{$person->first_name}}</td>
+                                    <td>{{$person->last_name}}</td>
+                                    <td>{{$person->country->name}}</td>
                                     <td>
-                                        <a class="btn btn-warning" href="{{route('languages.edit', $language->id)}}">Edit</a>
+                                        <ul>
+                                        @foreach($person->languages as $language)
+                                            <li>{{$language->name}}</li>
+                                        @endforeach
+                                        </ul>
                                     </td>
                                     <td>
-                                        <form method="post" action="{{ route('languages.destroy', $language->id) }}">
+                                        <a class="btn btn-warning" href="{{route('people.edit', $person->id)}}">Edit</a>
+                                    </td>
+                                    <td>
+                                        <form method="post" action="{{ route('people.destroy', $person->id) }}">
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-danger" type="submit">Delete</button>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Language;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
 
 class LanguageController extends Controller
@@ -37,9 +38,15 @@ class LanguageController extends Controller
      */
     public function store(Request $request)
     {
+
+//        Validate
+        $request->validate([
+            'name'=>['required','unique:languages,name','max:100']
+        ]);
         $language = new Language;
 
         $language->name = $request->name;
+        $language->created_by = Auth::id();
 
         $language->save();
 
@@ -55,6 +62,7 @@ class LanguageController extends Controller
     public function show(Language $language)
     {
         //
+        return redirect(route('languages.index'))->with('status', 'Do not be a hacker');
     }
 
     /**
@@ -65,7 +73,8 @@ class LanguageController extends Controller
      */
     public function edit(Language $language)
     {
-        //
+
+        return view('languages.edit',compact('language'));
     }
 
     /**
@@ -78,6 +87,19 @@ class LanguageController extends Controller
     public function update(Request $request, Language $language)
     {
         //
+        //        Validate
+        $request->validate([
+            'name'=>['required','unique:languages,name,'.$language->id,'max:100']
+        ]);
+
+        $language->name = $request->name;
+
+
+        $language->save();
+
+        return redirect(route('languages.index'))->with('status', 'Language Updated');
+
+
     }
 
     /**
@@ -89,5 +111,9 @@ class LanguageController extends Controller
     public function destroy(Language $language)
     {
         //
+        $language->delete();
+        $language->deleted_by = Auth::id();
+        $language->save();
+        return redirect(route('languages.index'))->with('status', 'Language Deleted');
     }
 }

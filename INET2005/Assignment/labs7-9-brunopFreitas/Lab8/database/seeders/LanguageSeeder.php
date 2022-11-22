@@ -19,18 +19,22 @@ class LanguageSeeder extends Seeder
         DB::table('languages')->insert([
             'name' => 'English',
             'created_at' => Carbon::now(),
+            'created_by'=> 1,
         ]);
         DB::table('languages')->insert([
             'name' => 'Korean',
             'created_at' => Carbon::now(),
+            'created_by'=> 1,
         ]);
         DB::table('languages')->insert([
             'name' => 'Portuguese',
             'created_at' => Carbon::now(),
+            'created_by'=> 1,
         ]);
         DB::table('languages')->insert([
             'name' => 'Spanish',
             'created_at' => Carbon::now(),
+            'created_by'=> 1,
         ]);
     }
 }

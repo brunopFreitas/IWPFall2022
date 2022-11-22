@@ -38,8 +38,8 @@ class LanguagePersonSeeder extends Seeder
             'created_at'=>Carbon::now()
         ]);
         DB::table('language_person')->insert([
-            'person_id' => 2,
-            'language_id' => 2,
+            'person_id' => 1,
+            'language_id' => 3,
             'created_at'=>Carbon::now()
         ]);
         DB::table('language_person')->insert([

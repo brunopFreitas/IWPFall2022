@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\PersonController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,4 +26,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //Route::get('/languages', [App\Http\Controllers\LanguageController::class, 'index'])->name('languages.index');
 //Route::get('/languages/create', [App\Http\Controllers\LanguageController::class, 'create'])->name('languages.create');
 
-Route::resource('/languages', App\Http\Controllers\LanguageController::class);
+Route::resource('/languages', LanguageController::class);
+Route::resource('/people', PersonController::class);

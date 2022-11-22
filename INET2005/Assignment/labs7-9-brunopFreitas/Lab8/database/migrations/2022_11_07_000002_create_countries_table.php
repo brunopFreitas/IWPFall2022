@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('countries', function (Blueprint $table) {
             $table->id();
-            $table->string('country_name', 100);
+            $table->string('name', 100);
             $table->string('flag_img_url');
             $table->timestamps();
         });

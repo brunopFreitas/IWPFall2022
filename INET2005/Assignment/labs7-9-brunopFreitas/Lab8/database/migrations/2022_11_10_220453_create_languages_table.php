@@ -15,8 +15,13 @@ return new class extends Migration
     {
         Schema::create('languages', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100);
+            $table->string('name', 100)->unique();
             $table->timestamps();
+            $table->softDeletes();
+            $table->foreignId('created_by');
+            $table->foreignId('deleted_by')->nullable();
+            $table->foreign('created_by')->references('id')->on('users');
+            $table->foreign('deleted_by')->references('id')->on('users');
         });
     }
 
