@@ -24,6 +24,7 @@
                         </thead>
                         <tbody>
                         @foreach($people as $person)
+                            @if(sizeof($person->roles)!=0)
                             <tr>
                                 <td>{{$person->name}}</td>
                                 <td>
@@ -37,13 +38,14 @@
                                     <a class="btn btn-warning" href="{{route('people.edit', $person->id)}}">Edit</a>
                                 </td>
                                 <td>
-                                    <form style="margin: 0; padding:0" method="post" action="{{ route('people.destroy', $person->id) }}">
+                                    <form method="post" action="{{ route('people.destroy', $person->id) }}">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger" type="submit">Delete</button>
                                     </form>
                                 </td>
                             </tr>
+                            @endif
                         @endforeach
                         </tbody>
                     </table>
