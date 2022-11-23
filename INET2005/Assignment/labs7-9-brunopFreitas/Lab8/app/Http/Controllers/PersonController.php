@@ -80,7 +80,9 @@ class PersonController extends Controller
     public function edit(Person $person)
     {
         //How to grab language info?
-        return view('people.edit',compact('person'));
+        $countries = Country::OrderBy('name')->get();
+        $languages = Language::OrderBy('name')->get();
+        return view('people.edit',compact('person', 'countries', 'languages'));
     }
 
     /**
@@ -93,6 +95,26 @@ class PersonController extends Controller
     public function update(Request $request, Person $person)
     {
         //
+        $request->validate([
+            'first_name'=>['required','max:100'],
+            'last_name'=>['required','max:100'],
+            'country_id'=>['required']
+        ]);
+        //save changes to person
+        $person->first_name = $request->first_name;
+        $person->last_name = $request->last_name;
+        $person->country_id = $request->country_id;
+        $person->save();
+
+
+
+        //save the related languages in the pivot table
+        $person->languages()->sync($request->language_ids);
+
+
+
+        //redirect back to the list
+        return redirect(route('people.index'))->with('status', 'Person updated');
     }
 
     /**
@@ -104,5 +126,7 @@ class PersonController extends Controller
     public function destroy(Person $person)
     {
         //
+        $person->delete();
+        return redirect(route('people.index'))->with('status', 'Person Deleted');
     }
 }

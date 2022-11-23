@@ -37,7 +37,7 @@
                                         Select a country...
                                     </option>
                                     @foreach($countries as $country)
-                                        <option value="{{$country->id}}">
+                                        <option {{ old('country_id') == $country->id ? 'selected' : ''}} value="{{$country->id}}">
                                             {{$country->name}}
                                         </option>
                                     @endforeach
@@ -51,7 +51,7 @@
 
                                     @foreach($languages as $language)
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="{{$language->id}}" name="language_ids[]" id="languages">
+                                        <input {{ is_array(old('language_ids')) && in_array($language->id, old('language_ids')) ? 'checked' : ''}} class="form-check-input" type="checkbox" value="{{$language->id}}" name="language_ids[]" id="languages">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             {{$language->name}}
                                         </label>

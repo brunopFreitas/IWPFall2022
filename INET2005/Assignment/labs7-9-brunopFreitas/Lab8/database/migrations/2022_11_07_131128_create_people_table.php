@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->foreignId('country_id');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('country_id')->references('id')->on('countries');
         });
