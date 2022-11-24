@@ -26,7 +26,7 @@ class Main extends React.Component {
   render() {
 
     //Sample
-    console.log(localStorage.getItem('foo'))
+    // console.log(localStorage.getItem('foo'))
 
     return ( 
       <div>

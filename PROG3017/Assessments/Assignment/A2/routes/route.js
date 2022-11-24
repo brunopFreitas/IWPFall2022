@@ -12,7 +12,7 @@ const {
 } = require('../models/pokemon')
 
 const validateJWT = require('../middleware/checkMyJWT')
-const headerName = 'X-auth-token'
+const headerName = 'x-auth-token'
 
 // POST NEW USER
 router.post("/user/register", async (req, res) => {
@@ -79,6 +79,7 @@ router.post("/user/login", async (req, res) => {
 
             if (result) {
                 newJWT = jwt.sign(req.body.email, process.env.JWT)
+                res.header('Access-Control-Expose-Headers', headerName)
                 res.header(headerName, newJWT)
                 res.status(200).send()
             } else {
