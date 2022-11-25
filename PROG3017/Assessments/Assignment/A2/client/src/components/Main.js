@@ -2,6 +2,7 @@ import React from 'react';
 import '../css/main.css'
 import 'font-awesome/css/font-awesome.min.css';
 import axios from 'axios';
+import Card from './Card';
 
 class Main extends React.Component {
   constructor(props) {
@@ -48,32 +49,9 @@ class Main extends React.Component {
             <div className="row">
 
               {
-                this.state.pokemon.map(item => {
-
-                  // return <Card pokemon={item}/> //Create this guy
+                this.state.pokemon.slice(0,9).map(item => {
                   return (
-                    <div className="col-md-4">
-                <div className="card mb-4 box-shadow">
-                  <img 
-                    className="card-img-top" 
-                    data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" 
-                    alt="Thumbnail [100%x225]" 
-                    style={{width: 125, display: 'block', alignSelf: 'center'}}
-	                  src={item.img} 
-                    data-holder-rendered="true" />
-                  <div className="card-body">
-                    <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <div className="d-flex justify-content-between align-items-center">
-                      <div className="btn-group">
-                          <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
-                          <button type="button" className="btn btn-sm btn-outline-secondary">Edit</button>
-                          <button type="button" className="btn btn-sm btn-outline-secondary">Delete</button>
-                      </div>
-                      <small className="text-muted">{item.name}</small>
-                    </div>
-                  </div>  
-                </div>
-              </div>
+                    <Card pokemon={item}/>
                   )
                 })
               }

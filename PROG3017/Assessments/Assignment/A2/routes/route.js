@@ -38,6 +38,7 @@ router.post("/user/register", async (req, res) => {
         user.save()
             .then(data => {
                 newJWT = jwt.sign(req.body.email, process.env.JWT)
+                res.header('Access-Control-Expose-Headers', headerName)
                 res.header(headerName, newJWT)
                 res.status(201).json({
                     id: data._id,
