@@ -14,10 +14,7 @@ const Card = props => {
                   <div className="card-body">
                     <p className="card-text">
                         Name: {props.pokemon.name}
-                        <br/>
-                          Type: {props.pokemon.type.map(type=> {
-                                  return (type + " ")
-                              })}
+                        <br/>                           
                     </p>
                     <div className="d-flex justify-content-between align-items-center">
                       <div className="btn-group">
