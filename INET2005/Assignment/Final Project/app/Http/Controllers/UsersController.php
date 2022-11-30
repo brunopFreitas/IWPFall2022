@@ -6,6 +6,7 @@ use App\Models\Users;
 use Illuminate\Http\Request;
 use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
@@ -19,7 +20,11 @@ class UsersController extends Controller
     {
         //
         //
-        $people = Users::OrderBy('name')->with('roles')->get();
+        $people = Users::whereExists(function ($query){
+            $query->select(DB::raw(1))
+                ->from('role_users')
+                ->whereColumn('role_users.users_id','users.id');
+        })->OrderBy('name')->with('roles')->get();
         return view('people.index',compact('people'));
     }
 

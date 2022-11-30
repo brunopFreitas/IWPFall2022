@@ -15,4 +15,9 @@ class Users extends Model
     {
         return $this->belongsToMany(Role::class);
     }
+
+    function posts(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->belongsTo(Posts::class, 'created_by');
+    }
 }
