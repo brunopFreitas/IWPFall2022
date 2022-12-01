@@ -24,5 +24,5 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('/people', UsersController::class);
-Route::resource('/posts', PostsController::class);
+Route::resource('/people', UsersController::class)->middleware('check.user.admin')->name('index','people');
+Route::resource('/posts', PostsController::class)->name('index','posts');

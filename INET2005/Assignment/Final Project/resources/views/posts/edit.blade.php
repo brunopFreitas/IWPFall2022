@@ -26,7 +26,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="content1" class="form-label">Content:</label>
-                            <input type="text" class="form-control" id="content1" name="content1" value="{{old('content1') ?? $post->content1}}" placeholder="Insert content">
+                            <input type="text" class="form-control" id="content1" name="content1" value="{{old('content1') ?? $post->content}}" placeholder="Insert content">
                             @error('content')
                                 <div class="alert alert-danger">{{$message}}</div>
                             @enderror
@@ -39,7 +39,7 @@
                             @enderror
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
-                        <a class="btn btn-primary" href="{{ route('posts.index') }}"> Cancel </a>
+                        <a class="btn btn-primary" href="{{ route('posts') }}"> Cancel </a>
                     </form>
             </div>
         </div>

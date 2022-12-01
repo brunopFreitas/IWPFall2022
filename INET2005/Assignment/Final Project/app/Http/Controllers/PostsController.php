@@ -49,19 +49,19 @@ class PostsController extends Controller
         //        Validate
         $request->validate([
             'title'=>['required','max:100'],
-            'content'=>['max:100'],
+            'content1'=>['max:100'],
             'picture'=>['required']
         ]);
 
         $post = new Posts;
 
         $post->title = $request->title;
-        $post->content = $request->content;
+        $post->content = $request->content1;
         $post->picture = $request->picture;
         $post->created_by = Auth::user()->id;
         $post->save();
 
-        return redirect(route('posts.index'))->with('status', 'Post Added');
+        return redirect(route('posts'))->with('status', 'Post Added');
     }
 
     /**
@@ -109,7 +109,7 @@ class PostsController extends Controller
         $post->picture = $request->picture;
         $post->save();
 
-        return redirect(route('posts.index'))->with('status', 'Post Updated');
+        return redirect(route('posts'))->with('status', 'Post Updated');
     }
 
     /**
@@ -125,6 +125,6 @@ class PostsController extends Controller
         $post->deleted_by = Auth::id();
         $post->save();
 
-        return redirect(route('posts.index'))->with('status', 'Post Deleted');
+        return redirect(route('posts'))->with('status', 'Post Deleted');
     }
 }

@@ -16,6 +16,7 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         //
@@ -63,7 +64,7 @@ class UsersController extends Controller
 
         $person->roles()->sync($request->role_ids);
 
-        return redirect(route('people.index'))->with('status', 'User Added');
+        return redirect(route('people'))->with('status', 'User Added');
     }
 
     /**
@@ -75,7 +76,7 @@ class UsersController extends Controller
     public function show(Users $person)
     {
         //
-        return redirect(route('people.index'))->with('status', 'Do not be a hacker');
+        return redirect(route('people'))->with('status', 'Do not be a hacker');
     }
 
     /**
@@ -122,7 +123,7 @@ class UsersController extends Controller
 
 
         //redirect back to the list
-        return redirect(route('people.index'))->with('status', 'User updated');
+        return redirect(route('people'))->with('status', 'User updated');
     }
 
     /**
@@ -135,6 +136,6 @@ class UsersController extends Controller
     {
         //
         $person->delete();
-        return redirect(route('people.index'))->with('status', 'Person Deleted');
+        return redirect(route('people'))->with('status', 'Person Deleted');
     }
 }

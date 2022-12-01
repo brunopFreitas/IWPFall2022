@@ -17,6 +17,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
+
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -49,6 +50,11 @@
                                 </li>
                             @endif
                         @else
+                            @if (session('isAdmin'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('people') }}">{{ __('Manage Users') }}</a>
+                                </li>
+                            @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}

@@ -54,7 +54,7 @@
                             @endforeach
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
-                        <a class="btn btn-primary" href="{{ route('people.index') }}"> Cancel </a>
+                        <a class="btn btn-primary" href="{{ route('people') }}"> Cancel </a>
                     </form>
             </div>
         </div>

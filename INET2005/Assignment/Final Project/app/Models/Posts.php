@@ -13,6 +13,6 @@ class Posts extends Model
 
     function users()
     {
-        return $this->hasMany(Users::class, 'id');
+        return $this->belongsTo(Users::class, 'created_by');
     }
 }
