@@ -13,7 +13,8 @@ app.use(cors());
 app.use(bodyParser.json())
 app.use(express.json())
 app.use("/pokemon",route)
-app.use(express.static(path.join(__dirname, 'client/build')))
+// This code here make everything run as one process
+app.use(express.static(path.join(__dirname, 'client/build'))) 
 
 
 app.listen(process.env.PORT)

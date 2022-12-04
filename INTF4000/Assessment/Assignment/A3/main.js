@@ -60,7 +60,7 @@ function getMyMusic() {
   }
 
   // Path to the song folder 
-  const directoryPath = "/home/bruno/Documents/NSCC/Fall2022/INFT4000/Albuns/The Smiths/Hatful Of Hollow"
+  const directoryPath = "E:\\NSCC\\NSCC\\Fall2022\\INTF4000\\Hatful Of Hollow"
 
   // albumObject
   let albumObject = []
