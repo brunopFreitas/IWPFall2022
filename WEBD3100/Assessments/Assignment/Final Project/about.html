@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family= Abril+Fatface&family=Roboto+Slab&family=Merriweather">
+    <link rel="stylesheet" href="style.css">
+    <title>WEBD3100 - Final Project - Bruno Freitas</title>
+</head>
+<body>
+    <!-- flex container -->
+    <div class="flex-wrapper animate slide delay-1">
+        <!-- navbar -->
+        <header class="header-outer">
+            <div class="header-inner container">
+                <span id="logo" class="animate slide delay-1"><img src="img/pokemon_logo.png" alt="Pokeball">Pokepedia</span>
+                <ul class="nav-list animate slide delay-1">
+                    <li>
+                        <a href="/index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="/about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <!-- Mobile navbar -->
+        <!-- Top Navigation Menu -->
+        <div class="topnav animate slide delay-1">
+            <div class="navIcon">
+                <img src="img/pokemon_logo.png" alt="Pokeball" class="thumbnail">
+                <a href="/index.html" class="active">Pokepedia</a>
+            </div>
+            <div id="myLinks">
+                <a href="/index.html">Home</a>
+                <a href="/about.html">About</a>
+            </div>
+            <a href="javascript:void(0);" class="icon" onclick="myMenu()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+
+        <div id="callToAction">
+            <a href="https://w0448225-fullstack.onrender.com" target="_blank"><button class="animate slide delay-2">See the REACT version of this website</button></a>
+        </div>
+
+        <main class="about-main">
+            <div class="about-content animate slide delay-1">
+                <h1 class="animate slide delay-2">Final project for Web Development Fundamentals</h1>
+                <h3 class="animate slide delay-2">This website was developed using only HTML, CSS and JavaScript</h3>
+                <p class="animate slide delay-2">Features:
+                    <ul>
+                        <li class="animate slide delay-3">Fetching data from <a href="https://pokeapi.co/" target="_blank">PokeAPI</a></li>
+                        <li class="animate slide delay-4">Fetching images from <a href="https://www.serebii.net/" target="_blank">Serebii</a></li>
+                        <li class="animate slide delay-5">Mounting elements using JavaScript</li>
+                        <li class="animate slide delay-6">Using CSS animation</li>
+                    </ul>
+                </p>
+                <h1 class="animate slide delay-6">Take a look at my portfolio!</h1>
+            </div>
+        </main>
+
+        <footer class="footer animate slide delay-6">
+                <div id="footertText">Final project for Web Design Fundamentals </br>NSCC - IT Web Programing</div>
+                <div id="footerIcon">
+                    <a href="https://github.com/brunopFreitas?tab=repositories" target="_blank"><img src="img/GitHub-Mark-Light-32px.png" alt=""></a>
+                    <a href="https://www.linkedin.com/in/bruno-freitas-dev/" target="_blank"><img src="img/linkedin_logo.png" alt=""></a>
+                </div>
+                <div id="footerVersion">Version 1.0</div>
+        </footer>
+    </div>
+</body>
+</html>

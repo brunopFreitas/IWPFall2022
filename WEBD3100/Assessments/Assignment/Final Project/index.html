@@ -4,68 +4,75 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family= Abril+Fatface&family=Roboto+Slab&family=Merriweather">
     <link rel="stylesheet" href="style.css">
     <title>WEBD3100 - Final Project - Bruno Freitas</title>
 </head>
 <body>
-
-    <div class="flex-wrapper animate">
-
-        <header class="header-outer animate slide delay-1">
+    <!-- flex container -->
+    <div class="flex-wrapper animate slide delay-1">
+        <!-- navbar -->
+        <header class="header-outer">
             <div class="header-inner container">
-                <span id="logo"><img src="img/pokemon_logo.png" alt="Pokeball">Pokepedia</span>
-                <ul class="nav-list">
+                <span id="logo" class="animate slide delay-1"><img src="img/pokemon_logo.png" alt="Pokeball">Pokepedia</span>
+                <ul class="nav-list animate slide delay-1">
                     <li>
-                        <a href="placeholder.html">Home</a>
+                        <a href="/index.html">Home</a>
                     </li>
                     <li>
-                        <a href="placeholder.html">About</a>
+                        <a href="/about.html">About</a>
                     </li>
                 </ul>
             </div>
         </header>
+        <!-- Mobile navbar -->
+        <!-- Top Navigation Menu -->
+        <div class="topnav">
+            <div class="navIcon">
+                <img src="img/pokemon_logo.png" alt="Pokeball" class="thumbnail">
+                <a href="/index.html" class="active">Pokepedia</a>
+            </div>
+            <div id="myLinks">
+                <a href="/index.html">Home</a>
+                <a href="/about.html">About</a>
+            </div>
+            <a href="javascript:void(0);" class="icon" onclick="myMenu()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
 
         <div id="callToAction">
-            <a href="#"><button>See the REACT version of this website</button></a>
+            <a href="https://w0448225-fullstack.onrender.com" target="_blank"><button class="animate slide delay-3">See the REACT version of this website</button></a>
         </div>
 
         <main class="main">
-            <div class="container">
-                <!-- Idea of cards -->
-                <div class="card">
-                    <img src="img_avatar.png" alt="Avatar" style="width:100%">
+            <div class="deck-container animate slide delay-4">
+                <!-- Idea of cards, 10 per page-->
+                <!-- <div class="card">
+                    <img src="img_avatar.png" alt="Avatar">
                     <div class="card-container">
-                      <h4><b>John Doe</b></h4> 
+                      <h4>John Doe</h4> 
                       <p>Architect & Engineer</p> 
                     </div>
-                  </div>
-                  <div class="card">
-                    <img src="img_avatar.png" alt="Avatar" style="width:100%">
-                    <div class="card-container">
-                      <h4><b>John Doe</b></h4> 
-                      <p>Architect & Engineer</p> 
-                    </div>
-                  </div>
-                  <div class="card">
-                    <img src="img_avatar.png" alt="Avatar" style="width:100%">
-                    <div class="card-container">
-                      <h4><b>John Doe</b></h4> 
-                      <p>Architect & Engineer</p> 
-                    </div>
-                  </div>
+                  </div>  -->
             </div>
         </main>
+        <div class="pagination animate slide delay-4">
+            <button id="previous" class="pagination-button" page="0"> < </button>
+            <button id="next" class="pagination-button" page="10"> > </button>
+        </div>
 
-        <footer class="footer animate slide delay-5">
+        <footer class="footer animate slide delay-6">
                 <div id="footertText">Final project for Web Design Fundamentals </br>NSCC - IT Web Programing</div>
                 <div id="footerIcon">
-                    <a href="#"><img src="img/GitHub-Mark-Light-32px.png" alt=""></a>
-                    <a href="#"><img src="img/linkedin_logo.png" alt=""></a>
+                    <a href="https://github.com/brunopFreitas?tab=repositories" target="_blank"><img src="img/GitHub-Mark-Light-32px.png" alt=""></a>
+                    <a href="https://www.linkedin.com/in/bruno-freitas-dev/" target="_blank"><img src="img/linkedin_logo.png" alt=""></a>
                 </div>
                 <div id="footerVersion">Version 1.0</div>
         </footer>
 
+        <script src="index.js"></script>
     </div>
 </body>
 </html>
