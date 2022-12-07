@@ -20,4 +20,12 @@ class Users extends Model
     {
         return $this->belongsTo(Posts::class, 'created_by');
     }
+
+    function createdThemes(){
+        return $this->hasMany(Theme::class,'created_by');
+    }
+
+    function updatedThemes(){
+        return $this->hasMany(Theme::class,'updated_by');
+    }
 }

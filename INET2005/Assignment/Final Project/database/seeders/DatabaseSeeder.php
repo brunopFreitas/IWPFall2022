@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             RolesSeeder::class,
             RoleUserSeed::class,
             PostsSeeder::class,
+            ThemeSeeder::class,
         ]);
     }
 }

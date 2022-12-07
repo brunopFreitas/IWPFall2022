@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Auth;
@@ -26,3 +27,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('/people', UsersController::class)->middleware('check.user.admin')->name('index','people');
 Route::resource('/posts', PostsController::class)->name('index','posts');
+Route::resource('/themes',ThemeController::class);

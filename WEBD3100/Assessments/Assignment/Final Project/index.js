@@ -1,14 +1,6 @@
-// Mounting my deck
-
-(function () {
-// Pagination
+// Handling pagination
 const previous = document.getElementById('previous')
 const next = document.getElementById('next')
-
-// Fetch my API for the first time
-fetchMyAPI()
-
-// Pagination
 const paginationButton = document.querySelectorAll('.pagination-button').forEach(button => {
     button.addEventListener('click', event => {
         let purpose = event.target.getAttribute('id')
@@ -62,6 +54,8 @@ const paginationButton = document.querySelectorAll('.pagination-button').forEach
     })
 })
 
+
+// Fetching API and mounting my deck
 function fetchMyAPI() {
     // Fetching my api
 fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
@@ -122,14 +116,7 @@ fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
 
 }
 
+// Fetch my API for the first time
+(function () {
+fetchMyAPI()
 })()
-
-// Menu Mobile Version
-function myMenu() {
-    var x = document.getElementById("myLinks");
-    if (x.style.display === "block") {
-      x.style.display = "none";
-    } else {
-      x.style.display = "block";
-    }
-  }
