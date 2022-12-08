@@ -28,4 +28,5 @@ class Users extends Model
     function updatedThemes(){
         return $this->hasMany(Theme::class,'updated_by');
     }
+
 }

@@ -33,6 +33,13 @@
                                 @endif
                             @endforeach
                         @endif
+                            @if($role->name=='Theme Manager')
+                                @foreach($role->users as $user)
+                                    @if(Auth::user()->id == $user->id)
+                                        <div hidden>{{session(['isThemeManager' => true])}}</div>
+                                    @endif
+                                @endforeach
+                            @endif
                     @endforeach
                 @endisset
                 {{--Populating my feed--}}

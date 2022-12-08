@@ -41,8 +41,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    protected function roles(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
-    {
-        return $this->belongsToMany(Role::class);
-    }
+//    protected function roles(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+//    {
+//        return $this->belongsToMany(Role::class);
+//    }
+//
+//    function isTHemeManager(){
+//        foreach ($this->roles as $role){
+//            if($role->name == 'Theme Manager'){
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 }

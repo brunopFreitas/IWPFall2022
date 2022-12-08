@@ -15,6 +15,7 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <link rel="stylesheet" href="{{$selectedTheme->cdn_url}}">
 </head>
 <body>
 
@@ -31,7 +32,19 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                        <div class="btn-group">
+                            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Themes
+                            </button>
+                            <ul class="dropdown-menu">
+                                @foreach($themes as $theme)
+                                    <li>
+                                        <a class="dropdown-item" href="{{route('changetheme', $theme->id)}}">
+                                            {{$theme->name}}
+                                        </a></li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -53,6 +66,11 @@
                             @if (session('isAdmin'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('people') }}">{{ __('Manage Users') }}</a>
+                                </li>
+                            @endif
+                            @if (session('isThemeManager'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('themes.index') }}">{{ __('Manage Themes') }}</a>
                                 </li>
                             @endif
                             <li class="nav-item dropdown">
